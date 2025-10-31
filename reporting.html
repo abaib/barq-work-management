@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporting & Analytics - RBAC Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 50px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .module-overview {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-left: 4px solid #E67E22;
+            padding-left: 12px;
+        }
+        
+        .rbac-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 3px solid #1A4D7A;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        
+        .rbac-table th {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            border: 1px solid #FFFFFF;
+        }
+        
+        .rbac-table th.permission-col {
+            text-align: left;
+            width: 28%;
+        }
+        
+        .rbac-table td {
+            padding: 9px 8px;
+            text-align: center;
+            border: 1px solid #D1D5DB;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .rbac-table td.permission-name {
+            text-align: left;
+            font-weight: 600;
+            color: #2C3E50;
+            background: #F8F9FA;
+        }
+        
+        .access-full {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        
+        .access-limited {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        
+        .access-none {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding: 12px;
+            background: #F8F9FA;
+            border: 2px solid #3498DB;
+            margin-bottom: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2C3E50;
+        }
+        
+        .legend-box {
+            width: 22px;
+            height: 22px;
+            border: 1px solid #333;
+        }
+        
+        .permission-notes {
+            font-size: 14px;
+            color: #2C3E50;
+            padding: 14px;
+            background: #E3F2FD;
+            border-left: 4px solid #3498DB;
+            line-height: 1.6;
+        }
+        
+        .permission-notes strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Reporting & Analytics - RBAC Details</h1>
+            <p class="module-overview">Reporting & Analytics transforms operational data into actionable insights through customizable dashboards, KPI tracking, and automated report generation while protecting sensitive information through role-based access.</p>
+            
+            <h2 class="section-title">RBAC Matrix</h2>
+            <table class="rbac-table">
+                <thead>
+                    <tr>
+                        <th class="permission-col">Permission</th>
+                        <th>Admin</th>
+                        <th>Project Manager</th>
+                        <th>Finance Manager</th>
+                        <th>Viewer/Analyst</th>
+                        <th>Field Technician</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="permission-name">View Dashboard</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-limited">✓ Limited</td>
+                    </tr>
+                    <tr>
+                        <td class="permission-name">Export Reports</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-none">✗ None</td>
+                    </tr>
+                    <tr>
+                        <td class="permission-name">Configure Dashboard</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-limited">✓ Limited</td>
+                        <td class="access-limited">✓ Limited</td>
+                        <td class="access-limited">✓ Limited</td>
+                        <td class="access-none">✗ None</td>
+                    </tr>
+                    <tr>
+                        <td class="permission-name">View KPIs</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-limited">✓ Limited</td>
+                    </tr>
+                    <tr>
+                        <td class="permission-name">Drill-Down Analysis</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-none">✗ None</td>
+                    </tr>
+                    <tr>
+                        <td class="permission-name">Schedule Reports</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-none">✗ None</td>
+                    </tr>
+                    <tr>
+                        <td class="permission-name">Custom Reports</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-none">✗ None</td>
+                    </tr>
+                    <tr>
+                        <td class="permission-name">Share Reports</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-full">✓ Full</td>
+                        <td class="access-none">✗ None</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #D4EDDA;"></div>
+                    <span>Full Access</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #FFF3CD;"></div>
+                    <span>Limited Access</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #F8D7DA;"></div>
+                    <span>No Access</span>
+                </div>
+            </div>
+            
+            <div class="permission-notes">
+                <strong>Permission Notes:</strong> Limited access for Field Technicians means view only own performance metrics. Limited dashboard configuration means configure personal dashboard only, not system-wide settings.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

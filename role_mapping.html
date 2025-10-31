@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Role Definition Clarification</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 40px 60px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 30px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 15px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .challenge-box {
+            background: #F8F9FA;
+            padding: 12px 15px;
+            border-left: 4px solid #E67E22;
+            margin-bottom: 18px;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+        
+        .roles-box {
+            border: 2px solid #3498DB;
+            padding: 15px;
+            background: #FFFFFF;
+            position: relative;
+        }
+        
+        .roles-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #1A4D7A 0%, #3498DB 100%);
+        }
+        
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .roles-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .roles-list li {
+            font-size: 12px;
+            color: #2C3E50;
+            line-height: 1.5;
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+        }
+        
+        .roles-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #3498DB;
+            font-weight: 700;
+        }
+        
+        .mapping-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #1A4D7A;
+            font-size: 12px;
+        }
+        
+        .mapping-table th {
+            background: #1A4D7A;
+            color: #FFFFFF;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+            border: 1px solid #FFFFFF;
+        }
+        
+        .mapping-table td {
+            padding: 10px 8px;
+            border: 1px solid #E0E0E0;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        .mapping-table tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+        
+        .mapping-table td:first-child {
+            font-weight: 700;
+            color: #1A4D7A;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .metric-box {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid #E67E22;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">User Role Definition Clarification</h1>
+            <p class="subtitle">Role-mapping glossary resolving inconsistencies between primary and specialized roles</p>
+            
+            <div class="challenge-box">
+                <strong>The Challenge:</strong> The document defines 8 primary user roles, but detailed RBAC matrices introduce additional specialized roles (HR Manager, Legal Officer, Accountant, Customer Service Rep) that don't appear in the primary list. This creates ambiguity for RBAC configuration, licensing, and user assignment.
+            </div>
+            
+            <div class="main-grid">
+                <div class="roles-box">
+                    <h2 class="section-title">8 Primary Roles</h2>
+                    <ul class="roles-list">
+                        <li>System Administrator</li>
+                        <li>Project Manager</li>
+                        <li>Field Technician</li>
+                        <li>QC Inspector</li>
+                        <li>HSE Officer</li>
+                        <li>Warehouse Staff</li>
+                        <li>Finance Manager</li>
+                        <li>Viewer/Analyst</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h2 class="section-title" style="margin-bottom: 10px;">Specialized Role Mapping</h2>
+                    <table class="mapping-table">
+                        <thead>
+                            <tr>
+                                <th>Specialized Role</th>
+                                <th>Maps to Primary Role</th>
+                                <th>Module-Specific Permissions</th>
+                                <th>License Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HR Manager</td>
+                                <td>System Administrator</td>
+                                <td>Employee Management: Full CRUD on employee records, leave approval, performance reviews</td>
+                                <td>Admin License</td>
+                            </tr>
+                            <tr>
+                                <td>Legal Officer</td>
+                                <td>Finance Manager</td>
+                                <td>Contract Management: Full CRUD on contracts, legal review workflow, compliance tracking</td>
+                                <td>Standard License</td>
+                            </tr>
+                            <tr>
+                                <td>Accountant</td>
+                                <td>Finance Manager</td>
+                                <td>Financial Management: Full CRUD on invoices, expenses, budgets; Limited access to contracts</td>
+                                <td>Standard License</td>
+                            </tr>
+                            <tr>
+                                <td>Customer Service Rep</td>
+                                <td>Viewer/Analyst</td>
+                                <td>Service Request Management: Create/Edit service requests, view customer data, no financial access</td>
+                                <td>Standard License</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 12px; font-size: 11px; color: #2C3E50; line-height: 1.5;">
+                        <strong>Clarification Rules:</strong> No new user licenses required. Specialized roles inherit base permissions from primary role, then add module-specific permissions. A single user can have one primary role + multiple specialized role permissions (e.g., "John Doe" = Finance Manager + Accountant + Legal Officer).
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-value">$0</div>
+                    <div class="metric-label">Additional Licensing Costs (Specialized = Permission Sets)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">30-40%</div>
+                    <div class="metric-label">Reduction in RBAC Testing Complexity</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">50%</div>
+                    <div class="metric-label">Reduction in Access Confusion Support Tickets</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

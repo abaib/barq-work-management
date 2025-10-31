@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Roles & Permissions - Part 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 45px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .intro-text {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .roles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .role-box {
+            border: 3px solid #3498DB;
+            padding: 18px;
+            background: #FFFFFF;
+            position: relative;
+        }
+        
+        .role-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .role-name {
+            font-size: 20px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E67E22;
+        }
+        
+        .role-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        
+        .role-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .role-list li {
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+            margin-bottom: 5px;
+            padding-left: 18px;
+            position: relative;
+        }
+        
+        .role-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">User Roles & Permissions - Part 2</h1>
+            <p class="intro-text">Continuation of specialized roles covering HSE Officer, Warehouse Manager, Finance Manager, and Viewer/Analyst with their key responsibilities and primary module access.</p>
+            
+            <div class="roles-grid">
+                <div class="role-box">
+                    <h2 class="role-name">HSE Officer</h2>
+                    <div class="role-section-title">Key Responsibilities</div>
+                    <ul class="role-list">
+                        <li>Safety compliance and incident investigation</li>
+                        <li>Audit management and corrective actions</li>
+                        <li>Regulatory reporting and trend analysis</li>
+                    </ul>
+                    <div class="role-section-title">Primary Modules</div>
+                    <ul class="role-list">
+                        <li>QC & HSE Compliance, Reporting & Analytics</li>
+                    </ul>
+                </div>
+                
+                <div class="role-box">
+                    <h2 class="role-name">Warehouse Manager</h2>
+                    <div class="role-section-title">Key Responsibilities</div>
+                    <ul class="role-list">
+                        <li>Inventory control and stock management</li>
+                        <li>Material requisition approval</li>
+                        <li>Supplier coordination and receiving</li>
+                    </ul>
+                    <div class="role-section-title">Primary Modules</div>
+                    <ul class="role-list">
+                        <li>Material Management, Work Orders, Reporting</li>
+                    </ul>
+                </div>
+                
+                <div class="role-box">
+                    <h2 class="role-name">Finance Manager</h2>
+                    <div class="role-section-title">Key Responsibilities</div>
+                    <ul class="role-list">
+                        <li>Financial oversight and budget management</li>
+                        <li>Invoice processing and payment approval</li>
+                        <li>Cost analysis and financial reporting</li>
+                    </ul>
+                    <div class="role-section-title">Primary Modules</div>
+                    <ul class="role-list">
+                        <li>Financial Management, Contract Management, Reporting</li>
+                    </ul>
+                </div>
+                
+                <div class="role-box">
+                    <h2 class="role-name">Viewer/Analyst</h2>
+                    <div class="role-section-title">Key Responsibilities</div>
+                    <ul class="role-list">
+                        <li>Read-only access for monitoring and analysis</li>
+                        <li>Dashboard viewing and report generation</li>
+                        <li>Data analysis and trend identification</li>
+                    </ul>
+                    <div class="role-section-title">Primary Modules</div>
+                    <ul class="role-list">
+                        <li>Reporting & Analytics (limited access to other modules)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 1 - Core Screens Overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 60px 80px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 15px;
+        }
+        
+        .page-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            color: #2C3E50;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .module-card {
+            border: 2px solid #3498DB;
+            padding: 20px;
+            background: #FFFFFF;
+            position: relative;
+        }
+        
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-left: 15px;
+        }
+        
+        .module-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            text-transform: uppercase;
+        }
+        
+        .screen-badge {
+            background: #E67E22;
+            color: #FFFFFF;
+            padding: 4px 12px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .screen-list {
+            list-style: none;
+            padding-left: 15px;
+        }
+        
+        .screen-list li {
+            font-size: 15px;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .screen-list li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #3498DB;
+            font-size: 10px;
+            top: 5px;
+        }
+        
+        .total-summary {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            text-align: center;
+            border: 3px solid #E67E22;
+        }
+        
+        .total-summary .number {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+        
+        .total-summary .label {
+            font-size: 20px;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Phase 1 - Core Screens Overview</h1>
+            <p class="page-subtitle">Phase 1 establishes the operational foundation with 13 mission-critical screens across 5 core modules</p>
+            
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-name">1. Work Order Management</div>
+                        <div class="screen-badge">3 Screens</div>
+                    </div>
+                    <ul class="screen-list">
+                        <li>Work Order List & Dashboard - Real-time status tracking</li>
+                        <li>Work Order Creation/Edit - OCR-enabled form with photos</li>
+                        <li>Work Order Details - Complete history and progress tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-name">2. Material Management</div>
+                        <div class="screen-badge">3 Screens</div>
+                    </div>
+                    <ul class="screen-list">
+                        <li>Inventory Dashboard - Real-time stock levels across warehouses</li>
+                        <li>Material Request Form - Automated approval workflows</li>
+                        <li>Material Movement Tracking - SEC warehouse integration</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-name">3. Field Operations</div>
+                        <div class="screen-badge">3 Screens</div>
+                    </div>
+                    <ul class="screen-list">
+                        <li>Task Assignment View - GPS-enabled technician dispatch</li>
+                        <li>Work Execution Interface - Photo capture and time tracking</li>
+                        <li>Offline Sync Dashboard - Queue management and conflict resolution</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-name">4. QC/HSE Compliance</div>
+                        <div class="screen-badge">2 Screens</div>
+                    </div>
+                    <ul class="screen-list">
+                        <li>QC Checklist & Inspection - Digital forms with photo evidence</li>
+                        <li>HSE Incident Reporting - Real-time alerts and investigation workflows</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-name">5. Reporting & Analytics</div>
+                        <div class="screen-badge">2 Screens</div>
+                    </div>
+                    <ul class="screen-list">
+                        <li>Executive Dashboard - KPI visualization with drill-down capabilities</li>
+                        <li>Custom Report Builder - Scheduled exports and data analysis tools</li>
+                    </ul>
+                </div>
+                
+                <div class="total-summary">
+                    <div class="number">13</div>
+                    <div class="label">TOTAL PHASE 1 SCREENS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

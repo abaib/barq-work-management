@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Data Migration Strategy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 40px 60px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 30px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 15px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .challenge-box {
+            background: #F8F9FA;
+            padding: 12px 15px;
+            border-left: 4px solid #E67E22;
+            margin-bottom: 18px;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+        
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+        
+        .phase-box {
+            border: 2px solid #3498DB;
+            padding: 15px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 320px;
+        }
+        
+        .phase-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #1A4D7A 0%, #E67E22 100%);
+        }
+        
+        .phase-header {
+            margin-bottom: 10px;
+        }
+        
+        .phase-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1A4D7A;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .phase-timeline {
+            background: #E67E22;
+            color: #FFFFFF;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        
+        .phase-steps {
+            margin-top: 10px;
+        }
+        
+        .step-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #3498DB;
+            margin-bottom: 5px;
+        }
+        
+        .step-content {
+            font-size: 11px;
+            color: #2C3E50;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .step-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0 0 0;
+        }
+        
+        .step-content li {
+            margin-bottom: 3px;
+            padding-left: 12px;
+            position: relative;
+        }
+        
+        .step-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #3498DB;
+            font-size: 10px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        
+        .metric-box {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid #E67E22;
+        }
+        
+        .metric-value {
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        
+        .metric-label {
+            font-size: 10px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Legacy Data Migration Strategy</h1>
+            <p class="subtitle">Defining the strategy for migrating existing data from manual processes to PostgreSQL database</p>
+            
+            <div class="challenge-box">
+                <strong>The Challenge:</strong> While Barq currently uses manual processes, there are existing data sources (project records, client lists, employee records, inventory data) that need migration. Without a clear strategy, the new system launches with empty databases, losing historical context and forcing dual-system operation.
+            </div>
+            
+            <div class="phases-grid">
+                <div class="phase-box">
+                    <div class="phase-header">
+                        <div class="phase-title">Phase A: Discovery & Assessment</div>
+                        <div class="phase-timeline">Week 1-2</div>
+                    </div>
+                    
+                    <div class="phase-steps">
+                        <div class="step-title">Step 1: Identify Data Sources</div>
+                        <div class="step-content">
+                            Conduct stakeholder interviews with each department to create "Data Source Inventory"
+                            <ul>
+                                <li>Projects: Excel files, email archives</li>
+                                <li>HR: Employee spreadsheets, paper files</li>
+                                <li>Warehouse: Stock sheets, transaction logs</li>
+                                <li>Finance: Invoicing records, expense reports</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step-title">Step 2: Define Migration Scope</div>
+                        <div class="step-content">
+                            Categorize data by priority:
+                            <ul>
+                                <li><strong>Critical:</strong> Active projects (6 months), current employees, current inventory</li>
+                                <li><strong>Important:</strong> Historical projects (2 years), historical employees (3 years)</li>
+                                <li><strong>Nice-to-have:</strong> Archived projects (>2 years)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phase-box">
+                    <div class="phase-header">
+                        <div class="phase-title">Phase B: Cleansing & Preparation</div>
+                        <div class="phase-timeline">Week 2-3</div>
+                    </div>
+                    
+                    <div class="phase-steps">
+                        <div class="step-title">Step 3: Data Cleansing</div>
+                        <div class="step-content">
+                            <ul>
+                                <li><strong>Standardization:</strong> Consistent formats (dates, phone numbers, names, addresses)</li>
+                                <li><strong>De-duplication:</strong> Fuzzy matching algorithms to identify and merge duplicate records</li>
+                                <li><strong>Validation:</strong> Check data quality and completeness, flag missing critical data</li>
+                                <li><strong>Enrichment:</strong> Fill missing data by cross-referencing multiple sources</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step-title">Step 4: Data Mapping</div>
+                        <div class="step-content">
+                            Create "Data Mapping Document" for each source:
+                            <ul>
+                                <li>Map old data fields to new PostgreSQL table columns</li>
+                                <li>Define transformation rules (e.g., "Open" → "ACTIVE")</li>
+                                <li>Identify calculated fields to be derived</li>
+                                <li>Flag unmappable data for separate archiving</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phase-box">
+                    <div class="phase-header">
+                        <div class="phase-title">Phase C: Import & Validation</div>
+                        <div class="phase-timeline">Week 4</div>
+                    </div>
+                    
+                    <div class="phase-steps">
+                        <div class="step-title">Step 5: Staged Import</div>
+                        <div class="step-content">
+                            <ul>
+                                <li><strong>Dev environment (Day 1-2):</strong> Import cleansed data, run validation scripts, fix errors until >95% success</li>
+                                <li><strong>UAT environment (Day 3-4):</strong> Import for user validation, stakeholders review accuracy</li>
+                                <li><strong>Production (Week 7):</strong> Final import during deployment, immediate post-import validation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step-title">Step 6: Post-Migration Validation</div>
+                        <div class="step-content">
+                            <ul>
+                                <li><strong>Reconciliation reports:</strong> Compare old vs. new system record counts</li>
+                                <li><strong>Spot-check validation:</strong> Randomly sample 5-10% of records for detailed review</li>
+                                <li><strong>User acceptance:</strong> Department heads sign off that data is complete and accurate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-value">&gt;95%</div>
+                    <div class="metric-label">Migration Success Rate for Critical Records</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">&gt;90%</div>
+                    <div class="metric-label">Data Completeness (Required Fields Populated)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Department Head Sign-Off on Migrated Data</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">60-80 Hrs</div>
+                    <div class="metric-label">Additional Effort Across Weeks 1-4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

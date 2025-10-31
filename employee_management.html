@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management - RBAC Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 50px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .module-overview {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 35px;
+        }
+        
+        .content-column {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-left: 4px solid #3498DB;
+            padding-left: 12px;
+        }
+        
+        .rbac-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #1A4D7A;
+            font-size: 13px;
+        }
+        
+        .rbac-table th {
+            background: #1A4D7A;
+            color: #FFFFFF;
+            padding: 10px 6px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 12px;
+            border: 1px solid #FFFFFF;
+        }
+        
+        .rbac-table th.permission-col {
+            text-align: left;
+            width: 32%;
+        }
+        
+        .rbac-table td {
+            padding: 9px 6px;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        .rbac-table td.permission-name {
+            text-align: left;
+            font-weight: 600;
+            color: #2C3E50;
+            background: #F8F9FA;
+        }
+        
+        .access-full {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        
+        .access-limited {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        
+        .access-none {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .permission-notes {
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.6;
+            padding: 12px;
+            background: #FFF8E1;
+            border-left: 4px solid #E67E22;
+        }
+        
+        .permission-notes div {
+            margin-bottom: 4px;
+        }
+        
+        .permission-notes strong {
+            color: #1A4D7A;
+        }
+        
+        .image-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 580px;
+            border: 3px solid #3498DB;
+            background: #F8F9FA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 1px solid #E67E22;
+            pointer-events: none;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Employee Management - RBAC Details</h1>
+            <p class="module-overview">Employee Management provides comprehensive HR functionality including personnel records, leave management, attendance tracking, and performance evaluation while balancing administrative needs with employee privacy.</p>
+            
+            <div class="main-grid">
+                <div class="content-column">
+                    <div>
+                        <h2 class="section-title">RBAC Matrix</h2>
+                        <table class="rbac-table">
+                            <thead>
+                                <tr>
+                                    <th class="permission-col">Permission</th>
+                                    <th>Admin</th>
+                                    <th>HR Manager</th>
+                                    <th>Project Manager</th>
+                                    <th>Employee</th>
+                                    <th>Viewer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="permission-name">View Employees</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited*</td>
+                                    <td class="access-limited">✓ Limited**</td>
+                                    <td class="access-limited">✓ Limited*</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Manage Employee Records</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Manage Leave</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited***</td>
+                                    <td class="access-limited">✓ Limited****</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Attendance Tracking</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited*</td>
+                                    <td class="access-limited">✓ Limited**</td>
+                                    <td class="access-limited">✓ Limited*</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Performance Evaluation</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited***</td>
+                                    <td class="access-limited">✓ Limited**</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Salary Information</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-limited">✓ Limited**</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Onboard/Offboard</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Export HR Reports</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="permission-notes">
+                        <strong>Permission Notes:</strong>
+                        <div>*Limited: View only team members</div>
+                        <div>**Limited: View only own records</div>
+                        <div>***Limited: Manage only for direct reports</div>
+                        <div>****Limited: Submit own leave requests only</div>
+                    </div>
+                </div>
+                
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="/home/ubuntu/barq_presentation_images/team_collaboration.jpg" alt="Team Collaboration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Proposed Solution</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 60px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .pillar-box {
+            border: 3px solid #3498DB;
+            padding: 25px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 450px;
+        }
+        
+        .pillar-box.blue-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498DB 0%, #1A4D7A 100%);
+        }
+        
+        .pillar-box.green-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #27AE60 0%, #16A085 100%);
+        }
+        
+        .pillar-box.orange-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #D35400 100%);
+        }
+        
+        .icon-wrapper {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .pillar-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E67E22;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            font-size: 15px;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27AE60;
+            font-weight: 900;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">The Proposed Solution</h1>
+            <p class="subtitle">Three Core Pillars for Digital Transformation</p>
+            
+            <div class="three-column-grid">
+                <div class="pillar-box blue-top">
+                    <div class="icon-wrapper">📋</div>
+                    <h3 class="pillar-title">Work Order Management</h3>
+                    <ul class="feature-list">
+                        <li>OCR-based WO creation from screenshots</li>
+                        <li>Automatic material list extraction</li>
+                        <li>Task breakdown and assignment</li>
+                        <li>Real-time WO tracking</li>
+                        <li>Workflow automation</li>
+                    </ul>
+                </div>
+                
+                <div class="pillar-box green-top">
+                    <div class="icon-wrapper">📦</div>
+                    <h3 class="pillar-title">Material Management</h3>
+                    <ul class="feature-list">
+                        <li>SEC warehouse to Barq warehouse tracking</li>
+                        <li>Real-time inventory management</li>
+                        <li>Material release and return processing</li>
+                        <li>Variance tracking and reconciliation</li>
+                        <li>Cost control and optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="pillar-box orange-top">
+                    <div class="icon-wrapper">🔧</div>
+                    <h3 class="pillar-title">Field Operations</h3>
+                    <ul class="feature-list">
+                        <li>Mobile app with offline capability</li>
+                        <li>Mandatory photo-logging with geo-tagging</li>
+                        <li>Real-time status updates</li>
+                        <li>Task execution tracking</li>
+                        <li>Seamless data synchronization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

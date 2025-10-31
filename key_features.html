@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Features & Capabilities</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 50px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+        
+        .feature-box {
+            border: 3px solid #3498DB;
+            padding: 20px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 260px;
+        }
+        
+        .feature-box.blue-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498DB 0%, #1A4D7A 100%);
+        }
+        
+        .feature-box.green-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #27AE60 0%, #16A085 100%);
+        }
+        
+        .feature-box.orange-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #D35400 100%);
+        }
+        
+        .feature-box.red-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E74C3C 0%, #C0392B 100%);
+        }
+        
+        .icon-wrapper {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+        
+        .feature-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        
+        .feature-description {
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .benefit-list li {
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            padding-left: 22px;
+            position: relative;
+        }
+        
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27AE60;
+            font-weight: 900;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Key Features & Capabilities</h1>
+            <p class="subtitle">Four Critical Features for Operational Excellence</p>
+            
+            <div class="features-grid">
+                <div class="feature-box blue-top">
+                    <div class="icon-wrapper">📸</div>
+                    <h3 class="feature-title">OCR-Based WO Creation</h3>
+                    <p class="feature-description">Automatic extraction of work order details, material lists, and tasks from screenshots via advanced OCR technology.</p>
+                    <ul class="benefit-list">
+                        <li>Eliminates manual data entry</li>
+                        <li>Reduces processing time by 30%</li>
+                        <li>Ensures data accuracy</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-box green-top">
+                    <div class="icon-wrapper">📷</div>
+                    <h3 class="feature-title">Mandatory Photo-Logging</h3>
+                    <p class="feature-description">Geo-tagged, time-stamped photo evidence at every work step for comprehensive quality control and compliance.</p>
+                    <ul class="benefit-list">
+                        <li>Irrefutable work documentation</li>
+                        <li>Real-time QC verification</li>
+                        <li>Audit trail compliance</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-box orange-top">
+                    <div class="icon-wrapper">📦</div>
+                    <h3 class="feature-title">Material Management</h3>
+                    <p class="feature-description">Complete tracking from SEC warehouse pickup to Barq inventory to site release with automatic reconciliation.</p>
+                    <ul class="benefit-list">
+                        <li>Real-time inventory tracking</li>
+                        <li>Reduces material variance to &lt;5%</li>
+                        <li>Automated return processing</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-box red-top">
+                    <div class="icon-wrapper">📊</div>
+                    <h3 class="feature-title">Real-Time Reporting</h3>
+                    <p class="feature-description">Live dashboards with KPI tracking, project status, material balance, and compliance metrics.</p>
+                    <ul class="benefit-list">
+                        <li>Data-driven decision making</li>
+                        <li>Instant visibility into operations</li>
+                        <li>Customizable reports</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

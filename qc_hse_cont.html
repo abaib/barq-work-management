@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QC & HSE Compliance - Business Impact & Workflows</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 40px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 22px;
+            line-height: 1.4;
+        }
+        
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+        }
+        
+        .info-box {
+            border: 3px solid #3498DB;
+            padding: 15px;
+            background: #FFFFFF;
+            position: relative;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E67E22;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            padding-left: 22px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .info-list li strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+        
+        .compliance-box {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 12px;
+            border: 3px solid #E67E22;
+            margin-top: 12px;
+        }
+        
+        .compliance-box .title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .compliance-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .compliance-box li {
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 5px;
+            padding-left: 18px;
+            position: relative;
+        }
+        
+        .compliance-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 900;
+            font-size: 15px;
+        }
+        
+        .workflow-section {
+            margin-top: 12px;
+            padding: 12px;
+            background: #F8F9FA;
+            border: 2px solid #3498DB;
+        }
+        
+        .workflow-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        
+        .workflow-text {
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        .workflow-arrow {
+            color: #E67E22;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">QC & HSE Compliance - Business Impact & Workflows</h1>
+            <p class="subtitle">Comprehensive analysis of business value, compliance features, and operational workflows</p>
+            
+            <div class="three-column-grid">
+                <div class="info-box">
+                    <h2 class="section-title">Business Impact</h2>
+                    <ul class="info-list">
+                        <li><strong>Reduces workplace incidents</strong> through proactive safety monitoring and audits, creating a culture of prevention and continuous improvement</li>
+                        <li><strong>Ensures regulatory compliance</strong> with documented inspection trails that satisfy ISO, OSHA, and industry-specific requirements</li>
+                        <li><strong>Improves quality outcomes</strong> through systematic verification processes that catch defects early in the workflow</li>
+                        <li><strong>Protects from liability</strong> with comprehensive incident documentation providing legal protection and insurance compliance</li>
+                    </ul>
+                    
+                    <div class="workflow-section">
+                        <h3 class="workflow-title">ROI Metrics</h3>
+                        <p class="workflow-text">Organizations typically see 40% reduction in safety incidents, 60% faster regulatory audit preparation, and 25% improvement in first-time quality pass rates within 12 months of implementation.</p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h2 class="section-title">Compliance Features</h2>
+                    <ul class="info-list">
+                        <li><strong>Mandatory photo evidence</strong> for all inspections ensures visual documentation with GPS and timestamp metadata for complete traceability</li>
+                        <li><strong>Automated escalation</strong> for failed QC checks or safety violations triggers immediate notifications to relevant stakeholders</li>
+                        <li><strong>Integration with regulatory reporting</strong> requirements enables one-click export of compliance data in required formats</li>
+                        <li><strong>Trend analysis</strong> for preventive action planning identifies patterns and root causes to prevent recurring issues</li>
+                    </ul>
+                    
+                    <div class="compliance-box">
+                        <div class="title">Audit Readiness</div>
+                        <ul>
+                            <li>Complete inspection history with timestamps</li>
+                            <li>Photo evidence with metadata</li>
+                            <li>Corrective action tracking</li>
+                            <li>Incident investigation reports</li>
+                            <li>Exportable compliance dashboards</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h2 class="section-title">Key Workflows</h2>
+                    
+                    <div class="workflow-section">
+                        <h3 class="workflow-title">QC Workflow</h3>
+                        <p class="workflow-text">
+                            Pre-work inspection <span class="workflow-arrow">→</span> 
+                            Work execution <span class="workflow-arrow">→</span> 
+                            Post-work verification <span class="workflow-arrow">→</span> 
+                            Approval
+                        </p>
+                    </div>
+                    
+                    <div class="workflow-section">
+                        <h3 class="workflow-title">HSE Workflow</h3>
+                        <p class="workflow-text">
+                            Incident reporting <span class="workflow-arrow">→</span> 
+                            Investigation <span class="workflow-arrow">→</span> 
+                            Corrective action <span class="workflow-arrow">→</span> 
+                            Closure <span class="workflow-arrow">→</span> 
+                            Trend analysis
+                        </p>
+                    </div>
+                    
+                    <div class="compliance-box">
+                        <div class="title">Integration Points</div>
+                        <ul>
+                            <li>Work Order Management for QC checkpoints</li>
+                            <li>Field Operations for mobile inspections</li>
+                            <li>Reporting & Analytics for trend analysis</li>
+                            <li>Employee Management for training records</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

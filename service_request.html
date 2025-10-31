@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request Management - RBAC Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 50px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .module-overview {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 35px;
+        }
+        
+        .matrix-section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-left: 4px solid #E67E22;
+            padding-left: 12px;
+        }
+        
+        .rbac-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #1A4D7A;
+            font-size: 13px;
+        }
+        
+        .rbac-table th {
+            background: #1A4D7A;
+            color: #FFFFFF;
+            padding: 9px 6px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 12px;
+            border: 1px solid #FFFFFF;
+        }
+        
+        .rbac-table th.permission-col {
+            text-align: left;
+            width: 35%;
+        }
+        
+        .rbac-table td {
+            padding: 9px 6px;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        .rbac-table td.permission-name {
+            text-align: left;
+            font-weight: 600;
+            color: #2C3E50;
+            background: #F8F9FA;
+        }
+        
+        .access-full {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        
+        .access-limited {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        
+        .access-none {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .permission-notes {
+            font-size: 13px;
+            color: #2C3E50;
+            padding: 10px;
+            background: #FFF8E1;
+            border: 3px solid #E67E22;
+            line-height: 1.5;
+        }
+        
+        .permission-notes strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+        
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .info-section {
+            border: 3px solid #3498DB;
+            padding: 20px;
+            background: #FFFFFF;
+            position: relative;
+        }
+        
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .info-section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 22px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .info-list li strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+        
+        .sla-box {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 20px;
+            border: 3px solid #E67E22;
+        }
+        
+        .sla-box .title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        
+        .sla-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sla-box li {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .sla-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Service Request Management - RBAC Details</h1>
+            <p class="module-overview">Service Request Management enables responsive customer service with SLA compliance through systematic request tracking, assignment workflows, and automated escalation mechanisms.</p>
+            
+            <div class="main-grid">
+                <div class="matrix-section">
+                    <div>
+                        <h2 class="section-title">RBAC Matrix</h2>
+                        <table class="rbac-table">
+                            <thead>
+                                <tr>
+                                    <th class="permission-col">Permission</th>
+                                    <th>Admin</th>
+                                    <th>Project Manager</th>
+                                    <th>Customer Service Rep</th>
+                                    <th>Field Technician</th>
+                                    <th>Viewer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="permission-name">View Service Requests</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Create Service Request</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Assign Request</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Update Status</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Resolve Request</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Customer Communication</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">SLA Monitoring</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-full">✓ Full</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Export Reports</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="permission-notes">
+                            <strong>Permission Notes:</strong> Limited = View/update only assigned requests for Field Technicians and Viewers
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-column">
+                    <div class="info-section">
+                        <h3 class="info-section-title">Business Impact</h3>
+                        <ul class="info-list">
+                            <li><strong>Improves customer satisfaction</strong> through faster response times and transparent status tracking</li>
+                            <li><strong>Ensures SLA compliance</strong> with automated escalation and deadline monitoring</li>
+                            <li><strong>Reduces resolution time</strong> by 40% through efficient assignment and routing workflows</li>
+                            <li><strong>Provides accountability</strong> with complete audit trail of all customer interactions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sla-box">
+                        <div class="title">SLA Compliance Features</div>
+                        <ul>
+                            <li>Automated escalation for SLA breaches</li>
+                            <li>Priority-based routing and assignment</li>
+                            <li>Real-time SLA countdown timers</li>
+                            <li>Customer notification automation</li>
+                            <li>Performance metrics and reporting</li>
+                            <li>Integration with work order system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

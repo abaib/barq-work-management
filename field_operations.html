@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Operations - RBAC Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 50px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .module-overview {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+        }
+        
+        .matrix-section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-left: 4px solid #3498DB;
+            padding-left: 12px;
+        }
+        
+        .rbac-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #1A4D7A;
+            font-size: 14px;
+        }
+        
+        .rbac-table th {
+            background: #1A4D7A;
+            color: #FFFFFF;
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            border: 1px solid #FFFFFF;
+        }
+        
+        .rbac-table th.permission-col {
+            text-align: left;
+            width: 35%;
+        }
+        
+        .rbac-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .rbac-table td.permission-name {
+            text-align: left;
+            font-weight: 600;
+            color: #2C3E50;
+            background: #F8F9FA;
+        }
+        
+        .cell-full {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        
+        .cell-limited {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        
+        .cell-none {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+            padding: 12px;
+            background: #F8F9FA;
+            border: 2px solid #E0E0E0;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .legend-box {
+            width: 22px;
+            height: 22px;
+            border: 1px solid #333;
+        }
+        
+        .permission-notes {
+            font-size: 14px;
+            color: #2C3E50;
+            padding: 12px;
+            background: #FFF8E1;
+            border-left: 4px solid #E67E22;
+            line-height: 1.5;
+        }
+        
+        .permission-notes strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+        
+        .image-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .image-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1A4D7A;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(90deg, #3498DB 0%, #1A4D7A 100%);
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 260px;
+            border: 3px solid #3498DB;
+            background: #F8F9FA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Field Operations - RBAC Details</h1>
+            <p class="module-overview">Field Operations provides the mobile interface for technicians to receive assignments, execute work, capture evidence, and synchronize data in offline environments.</p>
+            
+            <div class="main-grid">
+                <div class="matrix-section">
+                    <div>
+                        <h2 class="section-title">RBAC Matrix</h2>
+                        <table class="rbac-table">
+                            <thead>
+                                <tr>
+                                    <th class="permission-col">Permission</th>
+                                    <th>Admin</th>
+                                    <th>Project Manager</th>
+                                    <th>Field Technician</th>
+                                    <th>QC Inspector</th>
+                                    <th>Viewer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="permission-name">View Assigned Tasks</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-limited">✓ Limited</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-limited">✓ Limited</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Start Work</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Upload Photos</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Geo-Tag & Timestamp</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Offline Sync</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Complete Task</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-full">✓ Full</td>
+                                    <td class="cell-none">✗ None</td>
+                                    <td class="cell-none">✗ None</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-box" style="background: #D4EDDA;"></div>
+                                <span>Full Access</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-box" style="background: #FFF3CD;"></div>
+                                <span>Limited Access</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-box" style="background: #F8D7DA;"></div>
+                                <span>No Access</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="permission-notes">
+                        <strong>Permission Notes:</strong> Limited = View only own assigned tasks
+                    </div>
+                </div>
+                
+                <div class="image-section">
+                    <div class="image-label">Mobile-First Field Interface</div>
+                    
+                    <div class="image-container">
+                        <img src="/home/ubuntu/upload/search_images/oyfEDRroIfjB.webp" alt="Field Service Mobile App">
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="/home/ubuntu/upload/search_images/ZMKKP6yCyErt.png" alt="Mobile Inspection Interface">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

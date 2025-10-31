@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporting & Analytics - Business Impact & Features</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 60px 80px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 50px;
+            line-height: 1.5;
+        }
+        
+        .three-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .info-section {
+            border: 2px solid #3498DB;
+            padding: 25px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 450px;
+        }
+        
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .info-section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E67E22;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            font-size: 15px;
+            color: #2C3E50;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .info-list li strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Reporting & Analytics - Business Impact & Features</h1>
+            <p class="subtitle">Comprehensive analysis of business value, key performance indicators, and advanced reporting capabilities</p>
+            
+            <div class="three-column-layout">
+                <div class="info-section">
+                    <h3 class="info-section-title">Business Impact</h3>
+                    <ul class="info-list">
+                        <li><strong>Data-driven decisions</strong> with real-time operational visibility across all modules and activities</li>
+                        <li><strong>80% reduction</strong> in reporting time through automation and scheduled report generation</li>
+                        <li><strong>Trend identification</strong> for continuous improvement initiatives and proactive problem-solving</li>
+                        <li><strong>Strategic planning</strong> with historical analysis enabling informed long-term decision-making</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3 class="info-section-title">Key Metrics</h3>
+                    <ul class="info-list">
+                        <li><strong>Work order</strong> completion rates and cycle times for operational efficiency tracking</li>
+                        <li><strong>Material utilization</strong> and waste tracking for cost optimization and sustainability</li>
+                        <li><strong>QC pass rates</strong> and defect trends for quality management and improvement</li>
+                        <li><strong>HSE incident</strong> frequency and severity for safety performance monitoring</li>
+                        <li><strong>Resource utilization</strong> and productivity metrics for workforce optimization</li>
+                        <li><strong>Budget vs. actual</strong> cost analysis for financial control and forecasting</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3 class="info-section-title">Advanced Features</h3>
+                    <ul class="info-list">
+                        <li><strong>Customizable widgets</strong> with drag-and-drop interface for personalized dashboard creation</li>
+                        <li><strong>Scheduled delivery</strong> via email with automated distribution to stakeholders</li>
+                        <li><strong>Multiple formats</strong> including Excel, PDF, and PowerPoint for flexible reporting</li>
+                        <li><strong>Role-based filtering</strong> for security and data protection ensuring appropriate access control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

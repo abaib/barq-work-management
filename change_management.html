@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Change Management Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 40px 60px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 30px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 15px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .challenge-box {
+            background: #F8F9FA;
+            padding: 12px 15px;
+            border-left: 4px solid #E67E22;
+            margin-bottom: 18px;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+        
+        .pillar-box {
+            border: 2px solid #3498DB;
+            padding: 15px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 200px;
+        }
+        
+        .pillar-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #1A4D7A 0%, #3498DB 100%);
+        }
+        
+        .pillar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .pillar-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1A4D7A;
+            text-transform: uppercase;
+        }
+        
+        .pillar-timeline {
+            background: #E67E22;
+            color: #FFFFFF;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        
+        .pillar-content {
+            font-size: 12px;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+        
+        .pillar-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0 0;
+        }
+        
+        .pillar-content li {
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .pillar-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27AE60;
+            font-weight: 900;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .metric-box {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid #E67E22;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Comprehensive Change Management Plan</h1>
+            <p class="subtitle">Ensuring smooth transition for 250+ users from manual processes to digital ERP through structured adoption program</p>
+            
+            <div class="challenge-box">
+                <strong>The Challenge:</strong> Moving 250+ users across 8 different roles from manual, paper-based processes to a comprehensive digital ERP represents a significant cultural shift. Current plan's 1-2 week training window is insufficient and risks low adoption, user resistance, and failure to achieve promised efficiency gains.
+            </div>
+            
+            <div class="pillars-grid">
+                <div class="pillar-box">
+                    <div class="pillar-header">
+                        <div class="pillar-title">Pillar 1: Pre-Launch Communication</div>
+                        <div class="pillar-timeline">Weeks 1-6</div>
+                    </div>
+                    <div class="pillar-content">
+                        "What's Coming and Why" messaging campaign for all 250+ users
+                        <ul>
+                            <li>Executive sponsorship: Leadership video explaining business case</li>
+                            <li>Role-specific benefit messaging: "What's in it for me?"</li>
+                            <li>Monthly town halls and Q&A sessions</li>
+                            <li>Visual roadmap showing timeline and expectations</li>
+                            <li>Success stories from pilot users or similar implementations</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="pillar-box">
+                    <div class="pillar-header">
+                        <div class="pillar-title">Pillar 2: Super-User Champion Program</div>
+                        <div class="pillar-timeline">Weeks 5-8</div>
+                    </div>
+                    <div class="pillar-content">
+                        Identify 15-20 "champions" from each user group as peer support
+                        <ul>
+                            <li>3-4 Field Technicians (respected by peers, tech-savvy)</li>
+                            <li>2-3 Project Managers (influential, early adopters)</li>
+                            <li>2-3 Warehouse Staff (experienced, process-oriented)</li>
+                            <li>Early access to system in Week 5 (UAT phase)</li>
+                            <li>Intensive 2-day training workshop (Week 6)</li>
+                            <li>Recognition program: Certificates, badges, executive acknowledgment</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="pillar-box">
+                    <div class="pillar-header">
+                        <div class="pillar-title">Pillar 3: Role-Specific Training</div>
+                        <div class="pillar-timeline">Weeks 7-8</div>
+                    </div>
+                    <div class="pillar-content">
+                        Scenario-based training beyond generic "click here" instructions
+                        <ul>
+                            <li>Field Technicians: "Complete a WO from start to finish with photos"</li>
+                            <li>Project Managers: "Create WO from screenshot, assign, track"</li>
+                            <li>Warehouse Staff: "Process material release and track inventory"</li>
+                            <li>Hands-on practice in training environment with realistic data</li>
+                            <li>Training materials in both Arabic and English</li>
+                            <li>Video tutorials (3-5 minutes each) for on-demand reference</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="pillar-box">
+                    <div class="pillar-header">
+                        <div class="pillar-title">Pillar 4: Post-Launch Hyper-Care</div>
+                        <div class="pillar-timeline">Weeks 9-12</div>
+                    </div>
+                    <div class="pillar-content">
+                        Dedicated support period for 2-4 weeks after full deployment
+                        <ul>
+                            <li>On-site support team at main office and key field sites</li>
+                            <li>Rapid response help desk: <2 hour response time for critical issues</li>
+                            <li>Daily stand-up meetings with super-users to identify issues</li>
+                            <li>Weekly feedback sessions with user groups</li>
+                            <li>Issue tracking dashboard: Categorize and prioritize problems</li>
+                            <li>Quick-win improvements: Deploy small fixes based on feedback</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-value">90-95%</div>
+                    <div class="metric-label">User Adoption Rate (vs. 60-70% without plan)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">50-60%</div>
+                    <div class="metric-label">Reduction in Post-Launch Support Tickets</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">3-4 Months</div>
+                    <div class="metric-label">Faster Achievement of Target KPIs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

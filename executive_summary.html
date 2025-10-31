@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 60px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 50px;
+            line-height: 1.5;
+        }
+        
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .info-box {
+            border: 3px solid #3498DB;
+            padding: 25px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 420px;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .icon-wrapper {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .box-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E67E22;
+            text-align: center;
+        }
+        
+        .box-description {
+            font-size: 16px;
+            color: #2C3E50;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            font-size: 15px;
+            color: #2C3E50;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .info-list li strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Executive Summary</h1>
+            <p class="subtitle">Strategic Initiative for Digital Transformation</p>
+            
+            <div class="three-column-grid">
+                <div class="info-box">
+                    <div class="icon-wrapper">🎯</div>
+                    <h3 class="box-title">Project Goal</h3>
+                    <p class="box-description">Develop a comprehensive work management and ERP system to modernize Barq International's operations and ensure regulatory compliance.</p>
+                </div>
+                
+                <div class="info-box">
+                    <div class="icon-wrapper">📊</div>
+                    <h3 class="box-title">Strategic Scope</h3>
+                    <ul class="info-list">
+                        <li><strong>Phase 1:</strong> Core work management</li>
+                        <li><strong>Phase 2:</strong> Advanced ERP capabilities</li>
+                        <li><strong>250+ active users</strong></li>
+                        <li><strong>4-month implementation</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <div class="icon-wrapper">💡</div>
+                    <h3 class="box-title">Value Proposition</h3>
+                    <ul class="info-list">
+                        <li><strong>20% cycle time reduction</strong></li>
+                        <li><strong>95%+ first-time quality</strong></li>
+                        <li><strong>98%+ HSE compliance</strong></li>
+                        <li><strong>12-18 month payback</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

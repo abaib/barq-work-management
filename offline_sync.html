@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Synchronization Conflict Resolution</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 40px 60px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 30px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 15px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .challenge-box {
+            background: #F8F9FA;
+            padding: 12px 15px;
+            border-left: 4px solid #E67E22;
+            margin-bottom: 18px;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+        
+        .priorities-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        
+        .priority-box {
+            border: 2px solid #3498DB;
+            padding: 12px 15px;
+            background: #FFFFFF;
+            position: relative;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 15px;
+            align-items: start;
+        }
+        
+        .priority-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .priority-badge {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid #E67E22;
+        }
+        
+        .priority-number {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 2px;
+        }
+        
+        .priority-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .priority-content {
+            font-size: 12px;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+        
+        .priority-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 5px;
+        }
+        
+        .priority-rule {
+            margin-bottom: 5px;
+        }
+        
+        .priority-rule strong {
+            color: #E67E22;
+        }
+        
+        .priority-handling {
+            font-size: 11px;
+            font-style: italic;
+            color: #2C3E50;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .metric-box {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid #E67E22;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Offline Synchronization Conflict Resolution</h1>
+            <p class="subtitle">Priority-based business rules for handling conflicts when field technicians sync offline work with online system updates</p>
+            
+            <div class="challenge-box">
+                <strong>The Challenge:</strong> Offline capability is critical for field technicians in areas with poor connectivity. However, conflict resolution is complex: What happens when a technician updates a task offline while a PM re-assigns it online? Without defined business rules, developers make arbitrary technical decisions that may not align with business needs, leading to data loss and user distrust.
+            </div>
+            
+            <div class="priorities-container">
+                <div class="priority-box">
+                    <div class="priority-badge">
+                        <div class="priority-number">P1</div>
+                        <div class="priority-label">Highest</div>
+                    </div>
+                    <div class="priority-content">
+                        <div class="priority-title">Safety & Compliance (Always Wins)</div>
+                        <div class="priority-rule"><strong>Rule:</strong> Any HSE incident report or safety-related data entered offline ALWAYS syncs and is never overwritten.</div>
+                        <div class="priority-handling"><strong>Rationale:</strong> Safety data is legally required and time-sensitive; losing it is unacceptable. Example: If technician reports a safety incident offline, it syncs even if the work order was cancelled online.</div>
+                    </div>
+                </div>
+                
+                <div class="priority-box">
+                    <div class="priority-badge">
+                        <div class="priority-number">P2</div>
+                        <div class="priority-label">High</div>
+                    </div>
+                    <div class="priority-content">
+                        <div class="priority-title">Field Work Completion (Wins Unless Contradicted by Admin)</div>
+                        <div class="priority-rule"><strong>Rule:</strong> Field technician's work completion data (status updates, photos, time logs) syncs successfully UNLESS an admin/PM has explicitly cancelled or re-assigned the task online.</div>
+                        <div class="priority-handling"><strong>Conflict Handling:</strong> If task was re-assigned online → Offline work is saved but flagged for PM review with notification: "Technician A completed this task offline, but you re-assigned it to Technician B. Please review." Field work is the core value-add; we don't want to lose completed work, but PM decisions override.</div>
+                    </div>
+                </div>
+                
+                <div class="priority-box">
+                    <div class="priority-badge">
+                        <div class="priority-number">P3</div>
+                        <div class="priority-label">Medium</div>
+                    </div>
+                    <div class="priority-content">
+                        <div class="priority-title">Inventory Transactions (Validate Against Current State)</div>
+                        <div class="priority-rule"><strong>Rule:</strong> Offline material releases sync only if current inventory level is sufficient; otherwise, flagged for warehouse review.</div>
+                        <div class="priority-handling"><strong>Conflict Handling:</strong> If offline release of 50 units, but current inventory is only 30 units → Transaction is saved as "Pending Approval" and warehouse staff is notified to review and approve/reject. Prevents negative inventory and material shortages, but doesn't lose transaction record.</div>
+                    </div>
+                </div>
+                
+                <div class="priority-box">
+                    <div class="priority-badge">
+                        <div class="priority-number">P4</div>
+                        <div class="priority-label">Standard</div>
+                    </div>
+                    <div class="priority-content">
+                        <div class="priority-title">Administrative Changes (Admin Wins, Notify User)</div>
+                        <div class="priority-rule"><strong>Rule:</strong> If PM or admin makes a change online (re-assign, cancel, edit) while technician is working offline, the admin change takes precedence.</div>
+                        <div class="priority-handling"><strong>Conflict Handling:</strong> Technician's offline work is saved in "Conflict History" log. Technician receives notification upon sync: "This task was re-assigned while you were offline. Your work has been saved for review." PM can view conflict history and decide whether to merge or discard offline work. Admin/PM decisions are strategic and should not be overwritten by field-level actions.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-value">&gt;95%</div>
+                    <div class="metric-label">Offline Sync Success Rate Without Conflicts</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">90%</div>
+                    <div class="metric-label">Reduction in Data Loss Complaints</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">+5-7 Days</div>
+                    <div class="metric-label">Development Effort (Week 5-6, Field Operations)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

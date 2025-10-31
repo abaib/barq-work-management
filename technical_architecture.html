@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Architecture</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 30px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .layers-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .layer-section {
+            background: #FFFFFF;
+            border: 3px solid #3498DB;
+            padding: 12px;
+            position: relative;
+        }
+        
+        .layer-section.blue-border {
+            border-left: 6px solid #3498DB;
+        }
+        
+        .layer-section.green-border {
+            border-left: 6px solid #27AE60;
+        }
+        
+        .layer-section.orange-border {
+            border-left: 6px solid #E67E22;
+        }
+        
+        .layer-section.red-border {
+            border-left: 6px solid #E74C3C;
+        }
+        
+        .layer-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .layer-icon {
+            font-size: 32px;
+        }
+        
+        .layer-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            text-transform: uppercase;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-left: 40px;
+        }
+        
+        .tech-tag {
+            background: #3498DB;
+            color: #FFFFFF;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .tech-tag.green {
+            background: #27AE60;
+        }
+        
+        .tech-tag.orange {
+            background: #E67E22;
+        }
+        
+        .tech-tag.red {
+            background: #E74C3C;
+        }
+        
+        .cloud-highlight {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 12px;
+            border: 3px solid #E67E22;
+        }
+        
+        .cloud-highlight .title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cloud-highlight .description {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Technical Architecture</h1>
+            <p class="subtitle">Modern 4-Layer Technology Stack</p>
+            
+            <div class="layers-stack">
+                <div class="layer-section blue-border">
+                    <div class="layer-header">
+                        <div class="layer-icon">🖥️</div>
+                        <div class="layer-name">Frontend Layer</div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">Redux</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Poppins/Inter Fonts</span>
+                    </div>
+                </div>
+                
+                <div class="layer-section green-border">
+                    <div class="layer-header">
+                        <div class="layer-icon">⚙️</div>
+                        <div class="layer-name">Backend Layer</div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag green">Node.js/Express</span>
+                        <span class="tech-tag green">REST APIs</span>
+                        <span class="tech-tag green">JWT Authentication</span>
+                        <span class="tech-tag green">Middleware</span>
+                        <span class="tech-tag green">Error Handling</span>
+                        <span class="tech-tag green">Logging</span>
+                    </div>
+                </div>
+                
+                <div class="layer-section orange-border">
+                    <div class="layer-header">
+                        <div class="layer-icon">🗄️</div>
+                        <div class="layer-name">Database Layer</div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag orange">PostgreSQL</span>
+                        <span class="tech-tag orange">PostGIS</span>
+                        <span class="tech-tag orange">Redis Cache</span>
+                        <span class="tech-tag orange">Data Validation</span>
+                        <span class="tech-tag orange">Backup Strategy</span>
+                        <span class="tech-tag orange">Replication</span>
+                    </div>
+                </div>
+                
+                <div class="layer-section red-border">
+                    <div class="layer-header">
+                        <div class="layer-icon">🔗</div>
+                        <div class="layer-name">Integration Layer</div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag red">AWS Textract (OCR)</span>
+                        <span class="tech-tag red">AWS S3 (Storage)</span>
+                        <span class="tech-tag red">AWS SES (Email)</span>
+                        <span class="tech-tag red">Webhooks</span>
+                        <span class="tech-tag red">Third-party APIs</span>
+                        <span class="tech-tag red">ERP Integration</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cloud-highlight">
+                <div class="title">
+                    <span>✨</span>
+                    <span>Cloud-Native Architecture:</span>
+                </div>
+                <div class="description">Scalable, secure, and maintainable system built on AWS infrastructure with containerization (Docker), orchestration (Kubernetes), and CI/CD pipeline (GitHub Actions) for rapid deployment and continuous improvement.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

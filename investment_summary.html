@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 40px 60px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .info-box {
+            border: 3px solid #3498DB;
+            padding: 18px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 540px;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498DB 0%, #16A085 100%);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-align: center;
+            border-bottom: 2px solid #E67E22;
+            padding-bottom: 10px;
+        }
+        
+        .subsection-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #555;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+        }
+        
+        .info-list li {
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .metric-highlight {
+            background: #3498DB;
+            color: #FFFFFF;
+            padding: 8px;
+            text-align: center;
+            margin-top: 12px;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 3px;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .phase-info {
+            font-size: 12px;
+            color: #2C3E50;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Investment Summary</h1>
+            <p class="subtitle">Complete Project Scope, Timeline, and Expected Return</p>
+            
+            <div class="three-column-grid">
+                <div class="info-box">
+                    <h3 class="section-title">Project Scope</h3>
+                    
+                    <div class="subsection-title">CORE MODULES</div>
+                    <ul class="info-list">
+                        <li>WO Management</li>
+                        <li>Material Management</li>
+                        <li>Field Operations</li>
+                        <li>QC & HSE</li>
+                        <li>Reporting</li>
+                    </ul>
+                    
+                    <div class="subsection-title">KEY FEATURES</div>
+                    <ul class="info-list">
+                        <li>OCR-based WO creation</li>
+                        <li>Mandatory photo-logging</li>
+                        <li>Real-time inventory tracking</li>
+                        <li>Bilingual support</li>
+                    </ul>
+                    
+                    <div class="subsection-title">PLATFORMS</div>
+                    <ul class="info-list">
+                        <li>Web (React)</li>
+                        <li>iOS/Android</li>
+                        <li>Offline capability</li>
+                    </ul>
+                    
+                    <div class="metric-highlight">
+                        <div class="metric-value">110+</div>
+                        <div class="metric-label">TOTAL API ENDPOINTS</div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3 class="section-title">Implementation Timeline</h3>
+                    
+                    <div class="subsection-title">PHASE 1: CORE SYSTEM</div>
+                    <div class="phase-info"><strong>Duration:</strong> 8 weeks</div>
+                    <div class="phase-info"><strong>Team:</strong> 13 people</div>
+                    <div class="phase-info"><strong>Deliverables:</strong> 60+ APIs</div>
+                    <div class="phase-info"><strong>Users:</strong> 50+</div>
+                    
+                    <div class="subsection-title">PHASE 2: ADVANCED ERP</div>
+                    <div class="phase-info"><strong>Duration:</strong> 8 weeks</div>
+                    <div class="phase-info"><strong>Team:</strong> 18 people</div>
+                    <div class="phase-info"><strong>Deliverables:</strong> 50+ APIs</div>
+                    <div class="phase-info"><strong>Users:</strong> 200+</div>
+                    
+                    <div class="metric-highlight">
+                        <div class="metric-value">4 Months</div>
+                        <div class="metric-label">TOTAL DURATION</div>
+                    </div>
+                    
+                    <div class="metric-highlight" style="margin-top: 8px;">
+                        <div class="metric-value">152</div>
+                        <div class="metric-label">PERSON-WEEKS REQUIRED</div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3 class="section-title">Expected ROI</h3>
+                    
+                    <div class="subsection-title">KEY METRICS</div>
+                    <ul class="info-list">
+                        <li>20% cycle time reduction</li>
+                        <li>95%+ first-time quality</li>
+                        <li>98%+ HSE compliance</li>
+                        <li>&lt;5% material variance</li>
+                    </ul>
+                    
+                    <div class="subsection-title">USER BASE</div>
+                    <ul class="info-list">
+                        <li>Phase 1: 50+ users</li>
+                        <li>Phase 2: 200+ users</li>
+                        <li>Total: 250+ users</li>
+                    </ul>
+                    
+                    <div class="metric-highlight">
+                        <div class="metric-value">12-18 Months</div>
+                        <div class="metric-label">PAYBACK PERIOD</div>
+                    </div>
+                    
+                    <div class="metric-highlight" style="margin-top: 8px;">
+                        <div class="metric-value">3-5x</div>
+                        <div class="metric-label">EXPECTED ROI MULTIPLE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

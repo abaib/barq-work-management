@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Management - RBAC Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 50px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .module-overview {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 35px;
+        }
+        
+        .matrix-section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-left: 4px solid #E67E22;
+            padding-left: 12px;
+        }
+        
+        .rbac-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #1A4D7A;
+            font-size: 13px;
+        }
+        
+        .rbac-table th {
+            background: #1A4D7A;
+            color: #FFFFFF;
+            padding: 9px 6px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 12px;
+            border: 1px solid #FFFFFF;
+        }
+        
+        .rbac-table th.permission-col {
+            text-align: left;
+            width: 32%;
+        }
+        
+        .rbac-table td {
+            padding: 9px 6px;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        .rbac-table td.permission-name {
+            text-align: left;
+            font-weight: 600;
+            color: #2C3E50;
+            background: #F8F9FA;
+        }
+        
+        .access-full {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        
+        .access-limited {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        
+        .access-none {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .permission-notes {
+            font-size: 13px;
+            color: #2C3E50;
+            padding: 10px;
+            background: #FFF8E1;
+            border-top: 4px solid #E67E22;
+            border-bottom: 4px solid #E67E22;
+            line-height: 1.5;
+        }
+        
+        .permission-notes strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+        
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .info-box {
+            border: 3px solid #3498DB;
+            padding: 20px;
+            background: #FFFFFF;
+            position: relative;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #3498DB 100%);
+        }
+        
+        .info-box-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E67E22;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            padding-left: 22px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .info-list li strong {
+            color: #1A4D7A;
+            font-weight: 700;
+        }
+        
+        .features-box {
+            background: linear-gradient(135deg, #1A4D7A 0%, #3498DB 100%);
+            color: #FFFFFF;
+            padding: 20px;
+            border: 3px solid #E67E22;
+        }
+        
+        .features-box .title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        
+        .features-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .features-box li {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .features-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Contract Management - RBAC Details</h1>
+            <p class="module-overview">Contract Management ensures proper authorization and document control throughout the contract lifecycle, from creation and negotiation through execution, renewal tracking, and termination with comprehensive audit trails.</p>
+            
+            <div class="main-grid">
+                <div class="matrix-section">
+                    <div>
+                        <h2 class="section-title">RBAC Matrix</h2>
+                        <table class="rbac-table">
+                            <thead>
+                                <tr>
+                                    <th class="permission-col">Permission</th>
+                                    <th>Admin</th>
+                                    <th>Contract Manager</th>
+                                    <th>Legal Officer</th>
+                                    <th>Project Manager</th>
+                                    <th>Viewer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="permission-name">View Contracts</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Create Contract</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Edit Contract</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Approve Contract</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Upload Documents</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Track Renewals</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                    <td class="access-limited">✓ Limited</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Terminate Contract</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                                <tr>
+                                    <td class="permission-name">Export Data</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-full">✓ Full</td>
+                                    <td class="access-none">✗ None</td>
+                                    <td class="access-none">✗ None</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="permission-notes">
+                            <strong>Permission Notes:</strong> Limited = View/create only assigned project contracts. Legal Officer has limited edit rights for legal review and markup only.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-column">
+                    <div class="info-box">
+                        <h3 class="info-box-title">Business Impact</h3>
+                        <ul class="info-list">
+                            <li><strong>Reduces contract risk</strong> through structured approval workflows and legal review requirements</li>
+                            <li><strong>Prevents revenue loss</strong> with automated renewal alerts and expiration tracking</li>
+                            <li><strong>Ensures compliance</strong> with regulatory requirements and corporate governance standards</li>
+                            <li><strong>Accelerates contract cycles</strong> by 50% through digital workflows and parallel approvals</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="features-box">
+                        <div class="title">Key Features</div>
+                        <ul>
+                            <li>Multi-stage approval workflows with role-based routing</li>
+                            <li>Version control with complete revision history</li>
+                            <li>Automated renewal notifications 90/60/30 days before expiration</li>
+                            <li>Digital signature integration for execution</li>
+                            <li>Searchable document repository with metadata tagging</li>
+                            <li>Obligation tracking and milestone management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

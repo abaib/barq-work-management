@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase Structure</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 50px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 12px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+        
+        .phases-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .phase-box {
+            border: 3px solid #3498DB;
+            padding: 25px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 520px;
+        }
+        
+        .phase-box.blue-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498DB 0%, #16A085 100%);
+        }
+        
+        .phase-box.orange-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #E74C3C 100%);
+        }
+        
+        .phase-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #3498DB;
+            margin-bottom: 10px;
+        }
+        
+        .phase-number.orange {
+            color: #E67E22;
+        }
+        
+        .phase-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .duration-badge {
+            display: inline-block;
+            background: #3498DB;
+            color: #FFFFFF;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .duration-badge.orange {
+            background: #E67E22;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #555;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .phase-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+        }
+        
+        .phase-list li {
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .phase-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: 700;
+        }
+        
+        .metrics-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #E67E22;
+        }
+        
+        .metric-box {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 28px;
+            font-weight: 900;
+            color: #3498DB;
+            margin-bottom: 5px;
+        }
+        
+        .metric-value.orange {
+            color: #E67E22;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Phase Structure</h1>
+            <p class="subtitle">4-Month Accelerated Implementation Timeline</p>
+            
+            <div class="phases-grid">
+                <div class="phase-box blue-gradient">
+                    <div class="phase-number">1</div>
+                    <h3 class="phase-title">Core System</h3>
+                    <div class="duration-badge">8 Weeks</div>
+                    
+                    <div class="section-title">FOCUS AREAS</div>
+                    <ul class="phase-list">
+                        <li>Work Order Management with OCR</li>
+                        <li>Material Management System</li>
+                        <li>Field Operations Mobile App</li>
+                        <li>QC & HSE Compliance</li>
+                    </ul>
+                    
+                    <div class="section-title">KEY DELIVERABLES</div>
+                    <ul class="phase-list">
+                        <li>60+ API Endpoints</li>
+                        <li>20+ Database Tables</li>
+                        <li>Web & Mobile Apps</li>
+                        <li>Real-time Dashboards</li>
+                    </ul>
+                    
+                    <div class="metrics-row">
+                        <div class="metric-box">
+                            <div class="metric-value">50+</div>
+                            <div class="metric-label">USERS</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">13</div>
+                            <div class="metric-label">TEAM SIZE</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phase-box orange-gradient">
+                    <div class="phase-number orange">2</div>
+                    <h3 class="phase-title">Advanced ERP</h3>
+                    <div class="duration-badge orange">8 Weeks</div>
+                    
+                    <div class="section-title">FOCUS AREAS</div>
+                    <ul class="phase-list">
+                        <li>Employee Management</li>
+                        <li>Contract Management</li>
+                        <li>Financial Module</li>
+                        <li>Advanced Analytics</li>
+                    </ul>
+                    
+                    <div class="section-title">KEY DELIVERABLES</div>
+                    <ul class="phase-list">
+                        <li>50+ New API Endpoints</li>
+                        <li>15+ New Tables</li>
+                        <li>ERP Integration</li>
+                        <li>System Optimization</li>
+                    </ul>
+                    
+                    <div class="metrics-row">
+                        <div class="metric-box">
+                            <div class="metric-value orange">200+</div>
+                            <div class="metric-label">USERS</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value orange">18</div>
+                            <div class="metric-label">TEAM SIZE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Operational Challenges</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(52, 152, 219, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 152, 219, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 60px 70px;
+            min-height: 720px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: 4px solid #E67E22;
+            padding-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C3E50;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .challenge-box {
+            border: 3px solid #3498DB;
+            padding: 25px;
+            background: #FFFFFF;
+            position: relative;
+            min-height: 240px;
+        }
+        
+        .challenge-box.blue-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498DB 0%, #1A4D7A 100%);
+        }
+        
+        .challenge-box.green-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #27AE60 0%, #16A085 100%);
+        }
+        
+        .challenge-box.orange-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E67E22 0%, #D35400 100%);
+        }
+        
+        .challenge-box.red-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #E74C3C 0%, #C0392B 100%);
+        }
+        
+        .icon-wrapper {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .challenge-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1A4D7A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .challenge-description {
+            font-size: 15px;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .impact-statement {
+            font-size: 14px;
+            color: #555;
+            font-style: italic;
+            background: #F8F9FA;
+            padding: 10px;
+            border-left: 3px solid #E67E22;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <h1 class="page-title">Current Operational Challenges</h1>
+            <p class="subtitle">Pain Points Requiring Digital Solutions</p>
+            
+            <div class="challenges-grid">
+                <div class="challenge-box blue-top">
+                    <div class="icon-wrapper">📋</div>
+                    <h3 class="challenge-title">Manual Processes</h3>
+                    <p class="challenge-description">Work orders received via email/WhatsApp screenshots with manual data entry and validation.</p>
+                    <div class="impact-statement">Impact: 30% time waste on manual processing</div>
+                </div>
+                
+                <div class="challenge-box green-top">
+                    <div class="icon-wrapper">👁️</div>
+                    <h3 class="challenge-title">Lack of Visibility</h3>
+                    <p class="challenge-description">No real-time visibility into project status, material tracking, or team activities.</p>
+                    <div class="impact-statement">Impact: Delayed decision-making and poor resource allocation</div>
+                </div>
+                
+                <div class="challenge-box orange-top">
+                    <div class="icon-wrapper">📦</div>
+                    <h3 class="challenge-title">Material Tracking Issues</h3>
+                    <p class="challenge-description">Difficulty tracking materials from SEC warehouse to Barq warehouse to project sites.</p>
+                    <div class="impact-statement">Impact: 10-15% material variance and inventory discrepancies</div>
+                </div>
+                
+                <div class="challenge-box red-top">
+                    <div class="icon-wrapper">⚠️</div>
+                    <h3 class="challenge-title">Compliance Gaps</h3>
+                    <p class="challenge-description">Difficulty ensuring QC and HSE compliance with limited documentation and audit trails.</p>
+                    <div class="impact-statement">Impact: Regulatory risk and potential compliance violations</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

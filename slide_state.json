@@ -1,0 +1,349 @@
+{
+  "project_info": {
+    "title": "App Screen Designs & Role-Based Access Control",
+    "created": 1761918659.6760435,
+    "last_updated": 1761930370.2650337,
+    "total_slides": 42
+  },
+  "slides": {
+    "title_slide": "edited",
+    "executive_summary": "edited",
+    "operational_challenges": "edited",
+    "proposed_solution": "edited",
+    "key_features": "edited",
+    "phase_structure": "edited",
+    "phase1_detailed": "edited",
+    "implementation_timeline": "edited",
+    "overview": "edited",
+    "phase1_overview": "edited",
+    "phase2_overview": "edited",
+    "document_structure": "edited",
+    "document_structure_cont": "edited",
+    "wo_management": "edited",
+    "material_management": "edited",
+    "field_operations": "edited",
+    "field_operations_cont": "edited",
+    "qc_hse": "edited",
+    "qc_hse_cont": "edited",
+    "reporting": "edited",
+    "reporting_cont": "edited",
+    "employee_management": "edited",
+    "employee_management_cont": "edited",
+    "contract_management": "edited",
+    "financial_management": "edited",
+    "financial_management_cont": "edited",
+    "service_request": "edited",
+    "user_roles": "edited",
+    "user_roles_cont": "edited",
+    "kpis_benefits": "edited",
+    "technical_architecture": "edited",
+    "investment_summary": "edited",
+    "next_steps_enhanced": "edited",
+    "rbac_matrix": "edited",
+    "enhancement_overview": "edited",
+    "ocr_derisking": "edited",
+    "change_management": "edited",
+    "role_mapping": "edited",
+    "data_migration": "edited",
+    "offline_sync": "edited",
+    "security_audit": "edited",
+    "security_audit_cont": "edited",
+    "next_steps": "deleted"
+  },
+  "outline": [
+    {
+      "id": "title_slide",
+      "title": "App Screen Designs & Role-Based Access Control",
+      "summary": "Title slide introducing the comprehensive UI/UX specifications with RBAC matrix for Barq Work Management Application, highlighting 23 screens, 8 roles, and complete access control.",
+      "image_plan": "/home/ubuntu/upload/search_images/kPVpAiZNx28p.webp; /home/ubuntu/upload/search_images/SRD0PgSKeJkf.png; /home/ubuntu/upload/search_images/JjLyiZ1U644B.jpg - The slide is about screen designs and RBAC. Images 22 and 23 show modern mobile app designs, and Image 9 shows an Access Matrix which is directly mentioned in the key highlights.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "executive_summary",
+      "title": "Executive Summary",
+      "summary": "Strategic initiative for digital transformation covering Project Goal (comprehensive work management and ERP system for Barq International's operations and regulatory compliance), Strategic Scope (Phase 1 Core work management, Phase 2 Advanced ERP capabilities, 250+ active users, 4-month implementation timeline), and Value Proposition (20% cycle time reduction, 95%+ first-time quality, 98%+ HSE compliance, 12-18 month payback period). Presented in three-column layout with icons and gradient top borders.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "operational_challenges",
+      "title": "Current Operational Challenges",
+      "summary": "Four critical pain points requiring digital solutions presented in 2x2 grid layout: Manual Processes (work orders via email/WhatsApp screenshots with manual data entry, 30% time waste on manual processing), Lack of Visibility (no real-time visibility into project status, material tracking, or team activities leading to delayed decision-making and poor resource allocation), Material Tracking Issues (difficulty tracking materials from SEC warehouse to Barq warehouse to project sites, 10-15% material variance and inventory discrepancies), and Compliance Gaps (difficulty ensuring QC and HSE compliance with limited documentation and audit trails, regulatory risk and potential compliance violations). Each challenge includes impact statement.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "proposed_solution",
+      "title": "The Proposed Solution",
+      "summary": "Three core pillars for digital transformation presented in three-column layout: Work Order Management (OCR-based WO creation from screenshots, automatic material list extraction, task breakdown and assignment, real-time WO tracking, workflow automation), Material Management (SEC warehouse to Barq warehouse tracking, real-time inventory management, material release and return processing, variance tracking and reconciliation, cost control and optimization), and Field Operations (mobile app with offline capability, mandatory photo-logging with geo-tagging, real-time status updates, task execution tracking, seamless data synchronization). Each pillar has 5 bullet points with checkmarks.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "key_features",
+      "title": "Key Features & Capabilities",
+      "summary": "Four critical features for operational excellence presented in 2x2 grid layout: OCR-Based WO Creation (automatic extraction of work order details, material lists, and tasks from screenshots via advanced OCR technology, eliminates manual data entry, reduces processing time by 30%, ensures data accuracy), Mandatory Photo-Logging (geo-tagged, time-stamped photo evidence at every work step for comprehensive quality control and compliance, irrefutable work documentation, real-time QC verification, audit trail compliance), Material Management (complete tracking from SEC warehouse pickup to Barq inventory to site release with automatic reconciliation, real-time inventory tracking, reduces material variance to <5%, automated return processing), and Real-Time Reporting (live dashboards with KPI tracking, project status, material balance, and compliance metrics, data-driven decision making, instant visibility into operations, customizable reports). Each feature has description and 3 benefits.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "phase_structure",
+      "title": "Phase Structure",
+      "summary": "4-month accelerated implementation timeline with two phases presented in two-column layout: Phase 1 Core System (8 weeks duration, Focus Areas: Work Order Management with OCR, Material Management System, Field Operations Mobile App, QC & HSE Compliance, Key Deliverables: 60+ API Endpoints, 20+ Database Tables, Web & Mobile Apps, Real-time Dashboards, 50+ Users, Team Size: 13), Phase 2 Advanced ERP (8 weeks duration, Focus Areas: Employee Management, Contract Management, Financial Module, Advanced Analytics, Key Deliverables: 50+ New API Endpoints, 15+ New Tables, ERP Integration, System Optimization, 200+ Users, Team Size: 18). Each phase shows duration badge, focus areas list, key deliverables list, and metrics at bottom (users and team size).",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "phase1_detailed",
+      "title": "Phase 1 Overview - Core Work Management System",
+      "summary": "Comprehensive Phase 1 details (8 weeks) presented in structured layout with three main sections: Focus & Objectives (OCR-based work order creation, Material management system, Field operations mobile app, QC & HSE compliance modules, Real-time reporting dashboards, Bilingual support Arabic/English), Key Deliverables (Web application React, Mobile app iOS/Android, REST API backend 60+ endpoints, PostgreSQL database 20+ tables, Real-time dashboards, Audit logging system), Target Users with counts (Project managers 5-10, Field technicians 20-30, QC inspectors 5-8, HSE officers 3-5, Warehouse staff 5-10, System administrators 2-3). Bottom section shows 4 metric boxes: 8 Weeks Duration, 60+ API Endpoints, 50+ Active Users, 20+ DB Tables. Use two-column layout for Focus/Deliverables and Target Users, with metrics grid at bottom.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "implementation_timeline",
+      "title": "Implementation Timeline",
+      "summary": "Detailed 16-week (4-month) accelerated roadmap showing both phases with week-by-week breakdown. Phase 1 Core Work Management System (Weeks 1-8) divided into 4 segments: Weeks 1-2 FOUNDATION (Database, API framework, authentication, bilingual support), Weeks 3-4 WO MANAGEMENT (OCR integration, WO creation, validation, workflow), Weeks 5-6 FIELD OPERATIONS (Mobile app, photo-logging, inventory tracking), Weeks 7-8 TESTING & DEPLOY (UAT, bug fixes, production deployment, training). Phase 2 Advanced ERP Capabilities (Weeks 9-16) divided into 4 segments: Weeks 9-10 HR & CONTRACTS (Employee management, contract system, leave management), Weeks 11-12 FINANCE MODULE (Invoicing, expenses, budgets, cost centers), Weeks 13-14 ANALYTICS & REPORTS (Advanced dashboards, custom reports, BI tools), Weeks 15-16 OPTIMIZATION (Performance tuning, security hardening, full deployment). Bottom shows summary metrics: 16 Total Weeks, 152 Person-Weeks Required, 110+ API Endpoints. Use horizontal timeline layout with color-coded phases and week segments.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "overview",
+      "title": "Overview - Scope & Principles",
+      "summary": "Enterprise-grade work management system designed for construction and field operations, covering project scope, design principles, and business value including mobile-first architecture and offline capability.",
+      "image_plan": "/home/ubuntu/upload/search_images/PplWYXp8SSRX.png - The slide is an overview of scope and principles, emphasizing mobile-first architecture and field operations. Image 5 shows a modern dashboard with mobile screens, fitting the theme of a field service management application.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "phase1_overview",
+      "title": "Phase 1 - Core Screens Overview",
+      "summary": "Phase 1 establishes operational foundation with 13 mission-critical screens across 5 core modules: Work Order Management, Material Management, Field Operations, QC/HSE Compliance, and Reporting & Analytics.",
+      "image_plan": "/home/ubuntu/upload/search_images/qBo92pdz9ebT.png; /home/ubuntu/upload/search_images/kpKB49Y0NQOh.png - The slide details Phase 1 core screens, heavily focused on Work Order Management and Reporting. Images 2 and 3 show work order management dashboards/interfaces.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "phase2_overview",
+      "title": "Phase 2 - Advanced Screens Overview",
+      "summary": "Phase 2 extends enterprise capabilities with 10 advanced screens across 4 strategic modules: Employee Management, Contract Management, Service Request Management, and Financial Management.",
+      "image_plan": "/home/ubuntu/upload/search_images/Rqr2lBH8gvkX.jpg - The slide details Phase 2 advanced screens, covering Employee, Contract, Service Request, and Financial Management. Image 1 shows a detailed Work Order Management Metric Dashboard, which is a key output of the system and fits the \"advanced\" nature of Phase 2. (Note: Image 1 is a dashboard, which is relevant to the reporting/analytics mentioned in Phase 1, but it is a good general dashboard for a comprehensive system and Image 2/3 were used for Slide 3.)",
+      "slide_template_key": ""
+    },
+    {
+      "id": "document_structure",
+      "title": "Overview - Document Structure (Part 1)",
+      "summary": "First part of comprehensive documentation architecture showing Phase 1 and Phase 2 specifications structure. Covers Phase 1 Specifications (Slides 6-10) with detailed RBAC matrices, permission-level definitions, role-specific access patterns, and security considerations. Also covers Phase 2 Specifications (Slides 11-14) with advanced module RBAC details, cross-module permission dependencies, integration points with Phase 1, and compliance requirements.",
+      "image_plan": "/home/ubuntu/upload/search_images/TIXOnjGMicBv.png - Shows roadmap/structure visualization relevant to Phase 1 and Phase 2 documentation organization.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "document_structure_cont",
+      "title": "Overview - Document Structure (Part 2)",
+      "summary": "Continuation of documentation architecture covering Consolidated Views (Slides 15-18) and Documentation Features. Details complete user role definitions and responsibilities, master RBAC matrix spanning all modules, security architecture and audit trail specifications, and implementation roadmap. Also covers documentation features including version control and change tracking, centralized role glossary for consistency, standardized terminology (✓ Full, ✓ Limited, ✗ None), bilingual support with Arabic localization flags, and key benefits of the documentation system.",
+      "slide_template_key": "",
+      "image_plan": "/home/ubuntu/upload/search_images/KFSu6o35FBZp.png - Shows RBAC matrix structure relevant to consolidated views and documentation features."
+    },
+    {
+      "id": "wo_management",
+      "title": "Work Order Management - RBAC Details",
+      "summary": "Work Order Management permissions enable controlled workflow from creation through completion with full audit trails, covering view, create, edit, approve, delete, assign, close, and OCR capabilities across roles.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "material_management",
+      "title": "Material Management - RBAC Details",
+      "summary": "Material Management permissions ensure inventory accuracy and supply chain visibility, covering inventory view, material requests, processing, reconciliation, SEC warehouse tracking, and returns across roles.",
+      "image_plan": "/home/ubuntu/upload/search_images/OeS8obd4QzD7.webp; /home/ubuntu/upload/search_images/HlapwU7U5TUY.jpg - The slide is about Material Management RBAC. Images 7 and 8 both depict warehouse inventory management, which is the core subject of the module.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "field_operations",
+      "title": "Field Operations - RBAC Details",
+      "summary": "Field Operations provides the mobile interface for technicians to receive assignments, execute work, capture evidence, and synchronize data in offline environments. This slide presents the complete RBAC matrix showing 6 permissions across 5 roles (Admin, Project Manager, Field Technician, QC Inspector, Viewer) with color-coded access levels (Full/Limited/None). Includes permission notes explaining that Limited access means viewing only own assigned tasks. Also displays mobile field service app interface images showing the mobile-first design.",
+      "image_plan": "/home/ubuntu/upload/search_images/oyfEDRroIfjB.webp; /home/ubuntu/upload/search_images/ZMKKP6yCyErt.png - Mobile field service app interfaces showing task management and inspection capabilities",
+      "slide_template_key": ""
+    },
+    {
+      "id": "field_operations_cont",
+      "title": "Field Operations - Business Impact & Technical Features",
+      "summary": "Continuation of Field Operations RBAC details focusing on business impact and technical implementation. Covers four key business impacts: offline capability for remote locations, mandatory photo documentation with GPS for accountability, automated time tracking to reduce overhead, and real-time visibility for project managers. Also details four technical features: GPS tagging with accuracy indicators, offline queue with conflict resolution, photo compression and batch upload, and battery-efficient background synchronization. Includes compliance benefits showing complete audit trail of field activities with timestamps, photo evidence for quality verification, and location verification for billing purposes.",
+      "slide_template_key": "",
+      "image_plan": ""
+    },
+    {
+      "id": "qc_hse",
+      "title": "QC & HSE Compliance - RBAC Details",
+      "summary": "Quality Control and Health, Safety & Environment (HSE) modules ensure that all work meets specified standards and complies with safety regulations. This slide presents the complete RBAC matrix showing 8 permissions across 5 roles (Admin, QC Inspector, HSE Officer, Project Manager, Viewer) with color-coded access levels (Full/Limited/None). Includes permission notes explaining that Limited access means view summary reports only with no detailed incident data. Also displays quality control checklist images showing the systematic inspection tools used in the module.",
+      "image_plan": "/home/ubuntu/upload/search_images/ZjcwLklrqSXM.png; /home/ubuntu/upload/search_images/y8infOfVdQ7s.png - Quality control checklists showing inspection forms and QC documentation tools",
+      "slide_template_key": ""
+    },
+    {
+      "id": "qc_hse_cont",
+      "title": "QC & HSE Compliance - Business Impact & Workflows",
+      "summary": "Continuation of QC & HSE Compliance RBAC details focusing on business impact, compliance features, and key workflows. Covers four key business impacts: reduces workplace incidents through proactive safety monitoring, ensures regulatory compliance with documented inspection trails, improves quality outcomes through systematic verification, and protects from liability with comprehensive incident documentation. Details compliance features including mandatory photo evidence for all inspections, automated escalation for failed QC checks or safety violations, integration with regulatory reporting requirements, and trend analysis for preventive action planning. Also outlines two key workflows: QC workflow (pre-work inspection → work execution → post-work verification → approval) and HSE workflow (incident reporting → investigation → corrective action → closure → trend analysis).",
+      "slide_template_key": "",
+      "image_plan": ""
+    },
+    {
+      "id": "reporting",
+      "title": "Reporting & Analytics - RBAC Details",
+      "summary": "Reporting & Analytics transforms operational data into actionable insights through customizable dashboards, KPI tracking, and automated report generation while protecting sensitive information through role-based access. This slide presents the complete RBAC matrix showing 8 permissions across 5 roles (Admin, Project Manager, Finance Manager, Viewer/Analyst, Field Technician) with color-coded access levels (Full/Limited/None). Includes a legend showing the color coding for access levels (green for Full, amber for Limited, red for None). Also includes permission notes explaining that Limited access for Field Technicians means view only own performance metrics, and Limited dashboard configuration means configure personal dashboard only, not system-wide settings.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "reporting_cont",
+      "title": "Reporting & Analytics - Business Impact & Features",
+      "summary": "Continuation of Reporting & Analytics RBAC details focusing on business impact, key metrics, and advanced features. Covers four key business impacts: data-driven decisions with real-time operational visibility, 80% reduction in reporting time through automation, trend identification for continuous improvement initiatives, and strategic planning capabilities with historical analysis. Details six key metrics tracked: work order completion rates and cycle times, material utilization and waste tracking, QC pass rates and defect trends, HSE incident frequency and severity, resource utilization and productivity metrics, and budget vs. actual cost analysis. Also outlines four advanced features: customizable widgets with drag-and-drop interface, scheduled delivery via email, multiple export formats (Excel, PDF, PowerPoint), and role-based filtering for security and data protection.",
+      "slide_template_key": "",
+      "image_plan": ""
+    },
+    {
+      "id": "employee_management",
+      "title": "Employee Management - RBAC Details",
+      "summary": "Employee Management provides comprehensive HR functionality including personnel records, leave management, attendance tracking, and performance evaluation. This slide presents the complete RBAC matrix showing 8 permissions across 5 roles (Admin, HR Manager, Project Manager, Employee, Viewer) with color-coded access levels (Full/Limited/None). Includes detailed permission notes explaining the various Limited access levels: *Limited means view only team members, **Limited means view only own records, ***Limited means manage only for direct reports, ****Limited means submit own leave requests only. Also displays a team collaboration image showing HR and employee context.",
+      "image_plan": "/home/ubuntu/barq_presentation_images/team_collaboration.jpg - Team collaboration image showing HR and employee context",
+      "slide_template_key": ""
+    },
+    {
+      "id": "employee_management_cont",
+      "title": "Employee Management - Business Impact & Key Features",
+      "summary": "Continuation of Employee Management RBAC details focusing on business impact and key features. Covers four key business impacts: streamlines HR processes with self-service employee portal reducing administrative burden, ensures compliance with labor laws through automated tracking and documentation, improves employee satisfaction with transparent leave and attendance systems, and reduces HR administrative burden by 60% through automation. Details five key features: digital onboarding workflows with document collection and task automation, automated leave approval chains with balance tracking and calendar integration, biometric attendance integration with real-time tracking, performance review cycles with goal tracking and 360-degree feedback, and skills and certification management with expiration alerts.",
+      "slide_template_key": "",
+      "image_plan": ""
+    },
+    {
+      "id": "contract_management",
+      "title": "Contract Management - RBAC Details",
+      "summary": "Contract Management permissions ensure proper authorization and document control, covering contract viewing, creation, editing, approval, document uploads, renewal tracking, termination, and data export.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "financial_management",
+      "title": "Financial Management - RBAC Details",
+      "summary": "Financial Management RBAC matrix showing permissions across 8 operations (View Invoices, Create/Edit Invoices, Approve Payments, Manage Expenses, View Budgets, Financial Reports, Reconciliation, Export Financial Data) for 5 roles (Admin, Finance Manager, Project Manager, Accountant, Viewer) with color-coded access levels. Includes legend showing Full Access, Limited Access, and No Access color coding, plus detailed permission notes explaining that Limited access for Project Managers and Viewers means view only own project financial data, Limited expense management means submit own expenses only, and Limited export means non-sensitive summary data only.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "financial_management_cont",
+      "title": "Financial Management - Business Impact & Controls",
+      "summary": "Financial Management business value and operational controls presented in three-column layout covering: Business Impact (Financial control through multi-level approval workflows, Cash flow visibility with real-time tracking, Budget compliance with automated alerts, Audit readiness with complete transaction history), Key Controls (Segregation of duties, Dual authorization for payments above threshold, Immutable audit trail, Automated reconciliation, Budget enforcement), and Integration Points (Work Order Management for cost tracking, Material Management for procurement costs, Contract Management for payment terms, Reporting & Analytics for financial KPIs, External accounting systems via API).",
+      "slide_template_key": "",
+      "image_plan": ""
+    },
+    {
+      "id": "service_request",
+      "title": "Service Request Management - RBAC Details",
+      "summary": "Service Request Management permissions enable responsive customer service with SLA compliance, covering viewing, creating, assigning, status updates, resolution, customer communication, SLA monitoring, and reports.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "user_roles",
+      "title": "User Roles & Permissions - Part 1",
+      "summary": "Introduction to the eight specialized roles with least-privilege access principles, covering the first four roles: Admin (system configuration and full access), Project Manager (project oversight and resource allocation), Field Technician (task execution and mobile operations), and QC Inspector (quality verification and inspection checklists). Each role includes key responsibilities and primary modules.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "user_roles_cont",
+      "title": "User Roles & Permissions - Part 2",
+      "summary": "Continuation of user roles covering the remaining four specialized roles: HSE Officer (safety compliance and incident investigation), Warehouse Manager (inventory control and stock management), Finance Manager (financial oversight and budget management), and Viewer/Analyst (read-only access for monitoring and analysis). Each role includes key responsibilities and primary modules with consistent formatting from Part 1.",
+      "slide_template_key": "",
+      "image_plan": ""
+    },
+    {
+      "id": "kpis_benefits",
+      "title": "Key Performance Indicators & Benefits",
+      "summary": "Measurable impact and business value presented in two-section layout: Target KPIs section (left) showing 4 KPI cards with large percentage/number and description (20% WO Cycle Time reduction in work order processing, >95% First-Time Quality acceptance rate, >98% HSE Compliance safety and health score, <5% Material Variance inventory accuracy), and Business Benefits section (right) showing 4 benefit cards with icons and descriptions (Cost Reduction: reduce operational costs through automation and improved material management, Operational Efficiency: streamline workflows and eliminate manual processes for faster execution, Data-Driven Decisions: real-time visibility and analytics for informed decision making, Compliance & Risk: ensure regulatory compliance and reduce operational risks). Use two-column layout with KPIs on left (2x2 grid) and Benefits on right (vertical stack).",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "technical_architecture",
+      "title": "Technical Architecture",
+      "summary": "Modern 4-layer technology stack presented in vertical layers with color-coded sections: Frontend Layer (React.js, React Native, Tailwind CSS, Redux, TypeScript, Poppins/Inter Fonts), Backend Layer (Node.js/Express, REST APIs, JWT Authentication, Middleware, Error Handling, Logging), Database Layer (PostgreSQL, PostGIS, Redis Cache, Data Validation, Backup Strategy, Replication), Integration Layer (AWS Textract OCR, AWS S3 Storage, AWS SES Email, Webhooks, Third-party APIs, ERP Integration). Bottom section highlights Cloud-Native Architecture: Scalable, secure, and maintainable system built on AWS infrastructure with containerization (Docker), orchestration (Kubernetes), and CI/CD pipeline (GitHub Actions) for rapid deployment and continuous improvement. Each layer shows icon, layer name, and technology tags.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "investment_summary",
+      "title": "Investment Summary",
+      "summary": "Complete project scope, timeline, and expected return on investment presented in three-column layout: Project Scope (Core Modules: WO Management, Material Management, Field Operations, QC & HSE, Reporting; Key Features: OCR-based WO creation, Mandatory photo-logging, Real-time inventory tracking, Bilingual support; Platforms: Web React, iOS/Android, Offline capability; 110+ Total API Endpoints), Implementation Timeline (Phase 1 Core System: Duration 8 weeks, Team 13 people, Deliverables 60+ APIs, Users 50+; Phase 2 Advanced ERP: Duration 8 weeks, Team 18 people, Deliverables 50+ APIs, Users 200+; 4 Months Total Duration, 152 Person-Weeks Required), Expected ROI (Key Metrics: 20% cycle time reduction, 95%+ first-time quality, 98%+ HSE compliance, <5% material variance; User Base: Phase 1 50+ users, Phase 2 200+ users, Total 250+ users; 12-18 Months Payback Period, 3-5x Expected ROI Multiple). Use three-column layout with structured lists and highlighted metrics.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "next_steps_enhanced",
+      "title": "Next Steps & Recommendation",
+      "summary": "Strategic implementation roadmap for approval and development presented in two-section layout: Next Steps section (left) showing 4 numbered steps (1. Executive Review & Approval: Present this proposal to Barq's leadership for review and approval of the project scope, timeline, and investment; 2. Development Partner Selection: Identify and contract with a qualified development partner to execute the 4-month implementation plan; 3. Project Kickoff & Planning: Conduct detailed project planning, resource allocation, and establish communication protocols with all stakeholders; 4. Development & Deployment: Execute Phase 1 and Phase 2 development with continuous testing, UAT, and phased rollout to production), and Strategic Recommendation section (right) with recommendation statement, Key Success Factors list (Executive sponsorship and commitment, Dedicated project team and resources, Clear scope management and change control, Continuous stakeholder engagement, Aggressive but achievable timeline), and call-to-action box: READY TO TRANSFORM BARQ'S OPERATIONS? Approve this proposal and let's begin the journey to digital excellence and operational efficiency. Use two-column layout with numbered steps on left and recommendation box on right.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "rbac_matrix",
+      "title": "RBAC Matrix",
+      "summary": "Comprehensive RBAC matrix showing security and operational efficiency across all 9 modules and 8 user roles with color-coded permission levels and 110+ total permissions defined.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "enhancement_overview",
+      "title": "Enhancement & Risk Mitigation Strategy",
+      "summary": "Overview of five strategic enhancement areas to strengthen project success: De-risking OCR workflow, Change management for 250+ users, User role clarification, Data migration strategy, and Offline sync conflict resolution. Addressing these proactively reduces implementation risk by 60-70% and increases user adoption by 40-50%.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "ocr_derisking",
+      "title": "De-risking the OCR Workflow",
+      "summary": "Two-layer validation strategy for OCR-based work order creation: Layer 1 - Human-in-the-loop validation screen where Project Manager confirms/corrects extracted fields (30-60 sec per WO, 80% faster than manual entry). Layer 2 - Confidence scoring with auto-flagging (fields <85% confidence require review, WO <70% suggests manual entry). Reduces data accuracy failures from 40-50% to <5% while maintaining efficiency gains.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "change_management",
+      "title": "Comprehensive Change Management Plan",
+      "summary": "Four-pillar strategy for 250+ user transition: Pillar 1 - Pre-launch communication campaign (Weeks 1-6) with executive sponsorship and role-specific messaging. Pillar 2 - Super-user champion program (15-20 champions, intensive training, peer support). Pillar 3 - Role-specific scenario-based training (hands-on practice, Arabic/English materials, 100% completion required). Pillar 4 - Post-launch hyper-care support (2-4 weeks, on-site team, rapid response). Increases adoption from 60-70% to 90-95%.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "role_mapping",
+      "title": "User Role Definition Clarification",
+      "summary": "Role-mapping glossary resolving inconsistencies between 8 primary roles and specialized roles (HR Manager, Legal Officer, Accountant, Customer Service Rep). Specialized roles map to primary roles with module-specific permissions - no new licenses required. Clear mapping reduces RBAC testing complexity by 30-40% and access confusion support tickets by 50%. Includes permission inheritance rules and audit trail specifications.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "data_migration",
+      "title": "Legacy Data Migration Strategy",
+      "summary": "Three-phase migration approach: Phase A - Data discovery and assessment (Week 1-2, identify all sources, define migration scope by priority: Critical/Important/Nice-to-have). Phase B - Data cleansing and preparation (Week 2-3, standardization, de-duplication, validation, enrichment, field mapping). Phase C - Staged import and validation (Week 4, dev→UAT→production with reconciliation reports and user sign-off). Ensures >95% migration success rate and eliminates dual-system operation.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "offline_sync",
+      "title": "Offline Synchronization Conflict Resolution",
+      "summary": "Priority-based conflict resolution framework: Priority 1 - Safety/compliance data always syncs (HSE incidents never lost). Priority 2 - Field work completion syncs unless contradicted by admin (flagged for PM review). Priority 3 - Inventory transactions validate against current state (pending approval if insufficient stock). Priority 4 - Admin changes win with user notification (conflict history logged). Includes offline sync dashboard for technicians and conflict review queue for PMs. Reduces data loss complaints by 90%.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "security_audit",
+      "title": "Security & Audit Trail - Security Architecture",
+      "summary": "Enterprise-grade security architecture covering three main pillars: Authentication & Authorization (MFA, SSO, RBAC with 110+ permissions, session management, password policies, API key management), Data Protection (AES-256 encryption at rest, TLS 1.3 encryption in transit, HSM key management, data masking, automated backups with geo-redundancy, data retention policies), and Network Security (WAF protecting against OWASP Top 10, DDoS protection, IP whitelisting, intrusion detection, regular penetration testing, vulnerability scanning with automated patching). Presented in three-column layout with technical borders and gradient top bars.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "security_audit_cont",
+      "title": "Security & Audit Trail - Audit & Incident Response",
+      "summary": "Comprehensive audit logging and incident response capabilities presented in two-column layout covering: Audit Trail Features (comprehensive logging of all user actions and system events, immutable audit records with cryptographic hashing, timestamp accuracy using NTP synchronization, user attribution tracking who/what/when/where/why, searchable audit logs with advanced filtering, compliance reporting for SOC 2/ISO 27001/GDPR/industry standards, retention management with configurable periods) and Incident Response (automated detection of suspicious activities, real-time alerting via email/SMS/SIEM integration, incident classification with severity levels, containment procedures including account suspension, forensic investigation tools with audit trail reconstruction, recovery procedures with documented playbooks, post-incident review with root cause analysis). Includes compliance standards highlight box mentioning SOC 2 Type II, ISO 27001, GDPR, HIPAA compliance with third-party audits.",
+      "slide_template_key": "",
+      "image_plan": ""
+    }
+  ]
+}
