@@ -6,7 +6,7 @@
     <title>Overview - Document Structure (Part 2)</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -269,6 +269,29 @@
 }
 </style>
 
+
+<style>
+#lang-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #E67E22;
+    color: #FFFFFF;
+    border: 2px solid #1A4D7A;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 9999;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: background 0.2s;
+}
+#lang-toggle-btn:hover {
+    background: #D35400;
+}
+</style>
+
 </head>
 <body>
     <div class="slide-container">
@@ -311,7 +334,7 @@
                 
                 <div class="image-column">
                     <div class="image-container">
-                        <img src="/home/ubuntu/upload/search_images/KFSu6o35FBZp.png" alt="RBAC Matrix Structure">
+                        <img src="images/KFSu6o35FBZp.png" alt="RBAC Matrix Structure">
                     </div>
                     
                     <div class="features-box">
@@ -337,6 +360,57 @@
     <button class="nav-btn" onclick="window.location.href='wo_management.html'">Next ▶</button>
     <button class="nav-btn" onclick="window.location.href='security_audit_cont.html'">Last ⏭</button>
 </div>
+
+
+<script>
+// Language toggle functionality
+const translations = {
+    'en': {
+        'nav_first': '⏮ First',
+        'nav_previous': '◀ Previous',
+        'nav_next': 'Next ▶',
+        'nav_last': 'Last ⏭',
+        'lang_toggle': 'عربي'
+    },
+    'ar': {
+        'nav_first': '⏮ الأول',
+        'nav_previous': '◀ السابق',
+        'nav_next': 'التالي ▶',
+        'nav_last': 'الأخير ⏭',
+        'lang_toggle': 'English'
+    }
+};
+
+let currentLang = localStorage.getItem('presentationLang') || 'en';
+
+function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    localStorage.setItem('presentationLang', currentLang);
+    applyLanguage();
+}
+
+function applyLanguage() {
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    
+    // Update navigation buttons
+    const navButtons = document.querySelectorAll('.nav-btn');
+    if (navButtons[0]) navButtons[0].innerHTML = translations[currentLang].nav_first;
+    if (navButtons[1] && !navButtons[1].disabled) navButtons[1].innerHTML = translations[currentLang].nav_previous;
+    if (navButtons[3] && !navButtons[3].disabled) navButtons[3].innerHTML = translations[currentLang].nav_next;
+    if (navButtons[4]) navButtons[4].innerHTML = translations[currentLang].nav_last;
+    
+    // Update language toggle button
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) langBtn.textContent = translations[currentLang].lang_toggle;
+    
+    // Apply RTL/LTR styling
+    document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', 'Roboto', sans-serif" : "'Roboto', sans-serif";
+}
+
+// Apply language on page load
+document.addEventListener('DOMContentLoaded', applyLanguage);
+</script>
 
 </body>
 </html>
