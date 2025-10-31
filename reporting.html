@@ -170,6 +170,51 @@
             font-weight: 700;
         }
     </style>
+
+<style>
+.slide-navigation {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 77, 122, 0.95);
+    padding: 12px 24px;
+    border: 2px solid #E67E22;
+    z-index: 1000;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.nav-btn {
+    background: #3498DB;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+.nav-btn:hover {
+    background: #E67E22;
+}
+.nav-btn:disabled {
+    background: #7F8C8D;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.slide-counter {
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    min-width: 80px;
+    text-align: center;
+}
+</style>
+
 </head>
 <body>
     <div class="slide-container">
@@ -277,5 +322,14 @@
             </div>
         </div>
     </div>
+
+<div class="slide-navigation">
+    <button class="nav-btn" onclick="window.location.href='title_slide.html'">⏮ First</button>
+    <button class="nav-btn" onclick="window.location.href='qc_hse_cont.html'">◀ Previous</button>
+    <span class="slide-counter">20 / 42</span>
+    <button class="nav-btn" onclick="window.location.href='reporting_cont.html'">Next ▶</button>
+    <button class="nav-btn" onclick="window.location.href='security_audit_cont.html'">Last ⏭</button>
+</div>
+
 </body>
 </html>
