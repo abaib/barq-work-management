@@ -390,12 +390,15 @@
 
 
 
+
+
+
 <script>
 // Enhanced translation with Google Translate API
 const translationCache = {};
 let isTranslating = false;
 
-// Translation configuration
+// Translation configuration - navigation stays in English always
 const translations = {
     'en': {
         'nav_first': '⏮ First',
@@ -405,10 +408,10 @@ const translations = {
         'lang_toggle': 'عربي'
     },
     'ar': {
-        'nav_first': '⏮ الأول',
-        'nav_previous': '◀ السابق',
-        'nav_next': 'التالي ▶',
-        'nav_last': 'الأخير ⏭',
+        'nav_first': '⏮ First',  // Keep in English
+        'nav_previous': '◀ Previous',  // Keep in English
+        'nav_next': 'Next ▶',  // Keep in English
+        'nav_last': 'Last ⏭',  // Keep in English
         'lang_toggle': 'English'
     }
 };
@@ -493,13 +496,14 @@ async function translatePage(targetLang) {
     }
     
     try {
-        // Get all text elements
+        // Get all text elements - including slide 8 specific classes
         const selectors = [
             '.page-title', '.subtitle', '.section-title', '.section-text',
             '.intro-text', '.challenge-box', '.pillar-title', '.pillar-content',
             '.enhancement-title', '.enhancement-description', '.metric-label',
             '.layer-title', '.layer-content', '.priority-title', '.priority-content',
             '.step-title', '.step-content', '.phase-title', '.phase-content',
+            '.week-label', '.week-title', '.week-content', '.phase-header',  // Added for slide 8
             'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'td', 'th',
             '.highlight-label', '.company-name', '.footer-section'
         ];
@@ -548,12 +552,12 @@ async function toggleLanguage() {
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
     document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', 'Roboto', sans-serif" : "'Roboto', sans-serif";
     
-    // Update navigation buttons ONLY (don't translate them)
+    // Update navigation buttons - ALWAYS keep in English
     const navButtons = document.querySelectorAll('.nav-btn');
-    if (navButtons[0]) navButtons[0].innerHTML = translations[currentLang].nav_first;
-    if (navButtons[1] && !navButtons[1].disabled) navButtons[1].innerHTML = translations[currentLang].nav_previous;
-    if (navButtons[3] && !navButtons[3].disabled) navButtons[3].innerHTML = translations[currentLang].nav_next;
-    if (navButtons[4]) navButtons[4].innerHTML = translations[currentLang].nav_last;
+    if (navButtons[0]) navButtons[0].innerHTML = translations.en.nav_first;
+    if (navButtons[1] && !navButtons[1].disabled) navButtons[1].innerHTML = translations.en.nav_previous;
+    if (navButtons[3] && !navButtons[3].disabled) navButtons[3].innerHTML = translations.en.nav_next;
+    if (navButtons[4]) navButtons[4].innerHTML = translations.en.nav_last;
     
     // Translate page content
     await translatePage(currentLang);
@@ -566,12 +570,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
     document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', 'Roboto', sans-serif" : "'Roboto', sans-serif";
     
-    // Update navigation buttons to match current language
+    // Update navigation buttons - ALWAYS keep in English
     const navButtons = document.querySelectorAll('.nav-btn');
-    if (navButtons[0]) navButtons[0].innerHTML = translations[currentLang].nav_first;
-    if (navButtons[1] && !navButtons[1].disabled) navButtons[1].innerHTML = translations[currentLang].nav_previous;
-    if (navButtons[3] && !navButtons[3].disabled) navButtons[3].innerHTML = translations[currentLang].nav_next;
-    if (navButtons[4]) navButtons[4].innerHTML = translations[currentLang].nav_last;
+    if (navButtons[0]) navButtons[0].innerHTML = translations.en.nav_first;
+    if (navButtons[1] && !navButtons[1].disabled) navButtons[1].innerHTML = translations.en.nav_previous;
+    if (navButtons[3] && !navButtons[3].disabled) navButtons[3].innerHTML = translations.en.nav_next;
+    if (navButtons[4]) navButtons[4].innerHTML = translations.en.nav_last;
     
     // Update language toggle button
     const langBtn = document.getElementById('lang-toggle-btn');
