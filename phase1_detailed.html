@@ -308,6 +308,9 @@
 
 
 
+
+
+
 <script>
 // Enhanced translation with Google Translate API
 const translationCache = {};
@@ -366,8 +369,11 @@ async function translateElement(element, targetLang) {
     // Skip navigation and script elements
     if (element.classList.contains('slide-navigation') || 
         element.classList.contains('slide-counter') ||
+        element.classList.contains('nav-btn') ||
+        element.id === 'lang-toggle-btn' ||
         element.tagName === 'SCRIPT' || 
-        element.tagName === 'STYLE') {
+        element.tagName === 'STYLE' ||
+        element.tagName === 'BUTTON') {
         return;
     }
     
@@ -401,8 +407,8 @@ async function translatePage(targetLang) {
     
     // Show loading indicator
     const langBtn = document.getElementById('lang-toggle-btn');
+    const originalBtnText = langBtn ? langBtn.textContent : '';
     if (langBtn) {
-        const originalText = langBtn.textContent;
         langBtn.textContent = targetLang === 'ar' ? 'جاري الترجمة...' : 'Translating...';
         langBtn.disabled = true;
     }
@@ -445,9 +451,9 @@ async function translatePage(targetLang) {
     } finally {
         isTranslating = false;
         
-        // Restore button
+        // Restore button with correct text
         if (langBtn) {
-            langBtn.textContent = targetLang === 'ar' ? 'English' : 'عربي';
+            langBtn.textContent = translations[targetLang].lang_toggle;
             langBtn.disabled = false;
         }
     }
@@ -463,7 +469,7 @@ async function toggleLanguage() {
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
     document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', 'Roboto', sans-serif" : "'Roboto', sans-serif";
     
-    // Update navigation buttons
+    // Update navigation buttons ONLY (don't translate them)
     const navButtons = document.querySelectorAll('.nav-btn');
     if (navButtons[0]) navButtons[0].innerHTML = translations[currentLang].nav_first;
     if (navButtons[1] && !navButtons[1].disabled) navButtons[1].innerHTML = translations[currentLang].nav_previous;
@@ -474,10 +480,27 @@ async function toggleLanguage() {
     await translatePage(currentLang);
 }
 
-// Apply language on page load
+// Apply language on page load - auto-translate if Arabic is selected
 document.addEventListener('DOMContentLoaded', async function() {
+    // Set initial language settings
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', 'Roboto', sans-serif" : "'Roboto', sans-serif";
+    
+    // Update navigation buttons to match current language
+    const navButtons = document.querySelectorAll('.nav-btn');
+    if (navButtons[0]) navButtons[0].innerHTML = translations[currentLang].nav_first;
+    if (navButtons[1] && !navButtons[1].disabled) navButtons[1].innerHTML = translations[currentLang].nav_previous;
+    if (navButtons[3] && !navButtons[3].disabled) navButtons[3].innerHTML = translations[currentLang].nav_next;
+    if (navButtons[4]) navButtons[4].innerHTML = translations[currentLang].nav_last;
+    
+    // Update language toggle button
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) langBtn.textContent = translations[currentLang].lang_toggle;
+    
+    // Auto-translate content if Arabic is selected
     if (currentLang === 'ar') {
-        await toggleLanguage();
+        await translatePage('ar');
     }
 });
 </script>
