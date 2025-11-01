@@ -400,36 +400,143 @@
 </div>
 
 
+
+
+
 <script>
-// Language toggle functionality
-const translations = {
-    'en': {
-        'nav_first': '⏮ First',
-        'nav_previous': '◀ Previous',
-        'nav_next': 'Next ▶',
-        'nav_last': 'Last ⏭',
-        'lang_toggle': 'عربي'
-    },
-    'ar': {
-        'nav_first': '⏮ الأول',
-        'nav_previous': '◀ السابق',
-        'nav_next': 'التالي ▶',
-        'nav_last': 'الأخير ⏭',
-        'lang_toggle': 'English'
+// Enhanced translation with Google Translate API
+const translationCache = {};
+let isTranslating = false;
+
+async function translateText(text, targetLang) {
+    if (!text || text.trim() === '') return text;
+    
+    // Check cache
+    const cacheKey = `${text}_${targetLang}`;
+    if (translationCache[cacheKey]) {
+        return translationCache[cacheKey];
     }
-};
-
-let currentLang = localStorage.getItem('presentationLang') || 'en';
-
-function toggleLanguage() {
-    currentLang = currentLang === 'en' ? 'ar' : 'en';
-    localStorage.setItem('presentationLang', currentLang);
-    applyLanguage();
+    
+    try {
+        // Use Google Translate API via public endpoint
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data && data[0] && data[0][0] && data[0][0][0]) {
+            const translated = data[0].map(item => item[0]).join('');
+            translationCache[cacheKey] = translated;
+            return translated;
+        }
+    } catch (error) {
+        console.warn('Translation failed:', error);
+    }
+    
+    return text;
 }
 
-function applyLanguage() {
+async function translateElement(element, targetLang) {
+    if (!element || element.hasAttribute('data-no-translate')) return;
+    
+    // Skip navigation and script elements
+    if (element.classList.contains('slide-navigation') || 
+        element.classList.contains('slide-counter') ||
+        element.tagName === 'SCRIPT' || 
+        element.tagName === 'STYLE') {
+        return;
+    }
+    
+    // Store original text if not already stored
+    if (!element.hasAttribute('data-original-text')) {
+        const originalText = element.textContent.trim();
+        if (originalText) {
+            element.setAttribute('data-original-text', originalText);
+        }
+    }
+    
+    // Get text to translate
+    const originalText = element.getAttribute('data-original-text');
+    if (!originalText || originalText.length === 0) return;
+    
+    // Translate
+    if (targetLang === 'ar') {
+        const translated = await translateText(originalText, 'ar');
+        if (translated && translated !== originalText) {
+            element.textContent = translated;
+        }
+    } else {
+        // Restore original English text
+        element.textContent = originalText;
+    }
+}
+
+async function translatePage(targetLang) {
+    if (isTranslating) return;
+    isTranslating = true;
+    
+    // Show loading indicator
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) {
+        const originalText = langBtn.textContent;
+        langBtn.textContent = targetLang === 'ar' ? 'جاري الترجمة...' : 'Translating...';
+        langBtn.disabled = true;
+    }
+    
+    try {
+        // Get all text elements
+        const selectors = [
+            '.page-title', '.subtitle', '.section-title', '.section-text',
+            '.intro-text', '.challenge-box', '.pillar-title', '.pillar-content',
+            '.enhancement-title', '.enhancement-description', '.metric-label',
+            '.layer-title', '.layer-content', '.priority-title', '.priority-content',
+            '.step-title', '.step-content', '.phase-title', '.phase-content',
+            'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'td', 'th',
+            '.highlight-label', '.company-name', '.footer-section'
+        ];
+        
+        const elements = [];
+        selectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                // Only add leaf text nodes
+                if (el.children.length === 0 || el.tagName === 'LI' || el.tagName === 'TD' || el.tagName === 'TH') {
+                    elements.push(el);
+                }
+            });
+        });
+        
+        // Translate in batches to avoid rate limiting
+        const batchSize = 10;
+        for (let i = 0; i < elements.length; i += batchSize) {
+            const batch = elements.slice(i, i + batchSize);
+            await Promise.all(batch.map(el => translateElement(el, targetLang)));
+            
+            // Small delay between batches
+            if (i + batchSize < elements.length) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+        }
+    } catch (error) {
+        console.error('Translation error:', error);
+    } finally {
+        isTranslating = false;
+        
+        // Restore button
+        if (langBtn) {
+            langBtn.textContent = targetLang === 'ar' ? 'English' : 'عربي';
+            langBtn.disabled = false;
+        }
+    }
+}
+
+async function toggleLanguage() {
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+    currentLang = newLang;
+    localStorage.setItem('presentationLang', currentLang);
+    
+    // Apply language settings
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', 'Roboto', sans-serif" : "'Roboto', sans-serif";
     
     // Update navigation buttons
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -438,16 +545,16 @@ function applyLanguage() {
     if (navButtons[3] && !navButtons[3].disabled) navButtons[3].innerHTML = translations[currentLang].nav_next;
     if (navButtons[4]) navButtons[4].innerHTML = translations[currentLang].nav_last;
     
-    // Update language toggle button
-    const langBtn = document.getElementById('lang-toggle-btn');
-    if (langBtn) langBtn.textContent = translations[currentLang].lang_toggle;
-    
-    // Apply RTL/LTR styling
-    document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', 'Roboto', sans-serif" : "'Roboto', sans-serif";
+    // Translate page content
+    await translatePage(currentLang);
 }
 
 // Apply language on page load
-document.addEventListener('DOMContentLoaded', applyLanguage);
+document.addEventListener('DOMContentLoaded', async function() {
+    if (currentLang === 'ar') {
+        await toggleLanguage();
+    }
+});
 </script>
 
 </body>
